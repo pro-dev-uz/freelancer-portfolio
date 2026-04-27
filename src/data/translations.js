@@ -322,7 +322,6 @@ export const getNavLinks = (lang) => [
   { href: '#home', label: strings[lang]['nav.home'] },
   { href: '#about', label: strings[lang]['nav.about'] },
   { href: '#services', label: strings[lang]['nav.services'] },
-  { href: '#pricing', label: strings[lang]['nav.pricing'] },
   { href: '#projects', label: strings[lang]['nav.projects'] },
   { href: '#contact', label: strings[lang]['nav.contact'] },
 ];
