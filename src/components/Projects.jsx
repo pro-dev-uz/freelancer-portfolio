@@ -33,14 +33,20 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {projects.map((project, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6">
+          {projects.map((project, i) => {
+            const isBottom = i >= 3;
+            const isFirstBottom = i === 3;
+            const colClass = isBottom
+              ? `lg:col-span-2${isFirstBottom ? ' lg:col-start-2' : ''}`
+              : 'lg:col-span-2';
+            return (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group glass rounded-2xl sm:rounded-3xl overflow-hidden card-hover"
+              className={`group glass rounded-2xl sm:rounded-3xl overflow-hidden card-hover ${colClass}`}
             >
               <div className={`h-32 sm:h-40 bg-gradient-to-br ${project.color} p-4 sm:p-6 flex items-end relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-black/20" />
@@ -88,7 +94,8 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

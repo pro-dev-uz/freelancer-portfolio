@@ -529,22 +529,22 @@ const projectsText = {
   uz: [
     { title: 'Arif.uz — Solar Web Sayt', description: "Quyosh panellari kompaniyasi uchun zamonaviy web sayt — mahsulot katalogi, narxlar, bog'lanish formasi va SEO optimizatsiya", tags: ['Next.js', 'Tailwind', 'Prisma'] },
     { title: '@arif_uzbot — Telegram Bot', description: "Arif.uz kompaniyasi uchun Telegram bot — mahsulotlar katalogi, narx so'rash, menejer bilan bog'lanish va buyurtma berish", tags: ['Telegram Bot', 'Python', 'aiogram'] },
-    { title: 'Tennou.uz — Web Sayt', description: "Zamonaviy dizaynli korporativ web sayt — animatsiyalar, responsive dizayn va tez yuklanish tezligi", tags: ['React', 'Tailwind', 'Vite'] },
-    { title: '@olibketuz_bot — Buyurtma Boti', description: "Onlayn xarid va yetkazib berish boti — mahsulotlar katalogi, savat, buyurtma kuzatish tizimi", tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: 'Tennou.uz — Konsalting Sayt', description: "Chet elda o'qishga yordam beruvchi Tennou Consulting kompaniyasi uchun web sayt — universitetlar, dasturlar va ariza jarayoni", tags: ['React', 'Tailwind', 'Vite'] },
+    { title: '@olibketuz_bot — Taxi Boti', description: "Viloyatlar bo'yicha haydovchilar uchun taxi buyurtma boti — yo'nalishlar, narxlar va buyurtmalarni boshqarish tizimi", tags: ['Telegram Bot', 'Python', 'SQLite'] },
     { title: '@kino_yangi_bot — Kino Boti', description: "Yangi kinolarni izlash va ko'rish boti — katta baza, kategoriyalar bo'yicha qidirish, tavsiya tizimi", tags: ['Telegram Bot', 'Python', 'API'] },
   ],
   ru: [
     { title: 'Arif.uz — Solar Сайт', description: 'Современный веб-сайт для компании солнечных панелей — каталог продуктов, цены, форма обратной связи и SEO', tags: ['Next.js', 'Tailwind', 'Prisma'] },
     { title: '@arif_uzbot — Telegram Бот', description: 'Telegram-бот для компании Arif.uz — каталог продуктов, запрос цен, связь с менеджером и оформление заказа', tags: ['Telegram Bot', 'Python', 'aiogram'] },
-    { title: 'Tennou.uz — Веб-Сайт', description: 'Корпоративный сайт с современным дизайном — анимации, адаптивность и высокая скорость загрузки', tags: ['React', 'Tailwind', 'Vite'] },
-    { title: '@olibketuz_bot — Бот Заказов', description: 'Бот для онлайн-покупок и доставки — каталог товаров, корзина, система отслеживания заказов', tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: 'Tennou.uz — Консалтинг Сайт', description: 'Сайт для компании Tennou Consulting — помощь в поступлении за рубеж, университеты, программы и процесс подачи заявки', tags: ['React', 'Tailwind', 'Vite'] },
+    { title: '@olibketuz_bot — Такси Бот', description: 'Бот заказа такси для водителей по регионам — маршруты, цены и система управления заказами', tags: ['Telegram Bot', 'Python', 'SQLite'] },
     { title: '@kino_yangi_bot — Кино Бот', description: 'Бот для поиска и просмотра новых фильмов — большая база, поиск по категориям, система рекомендаций', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
   en: [
     { title: 'Arif.uz — Solar Website', description: 'Modern website for a solar panel company — product catalog, pricing, contact form and SEO optimization', tags: ['Next.js', 'Tailwind', 'Prisma'] },
     { title: '@arif_uzbot — Telegram Bot', description: 'Telegram bot for Arif.uz — product catalog, price inquiry, manager contact and order placement', tags: ['Telegram Bot', 'Python', 'aiogram'] },
-    { title: 'Tennou.uz — Website', description: 'Corporate website with modern design — animations, responsive layout and fast loading speed', tags: ['React', 'Tailwind', 'Vite'] },
-    { title: '@olibketuz_bot — Order Bot', description: 'Online shopping and delivery bot — product catalog, cart, order tracking system', tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: 'Tennou.uz — Consulting Site', description: 'Website for Tennou Consulting — helping students study abroad, universities, programs and application process', tags: ['React', 'Tailwind', 'Vite'] },
+    { title: '@olibketuz_bot — Taxi Bot', description: 'Taxi ordering bot for drivers by regions — routes, pricing and order management system', tags: ['Telegram Bot', 'Python', 'SQLite'] },
     { title: '@kino_yangi_bot — Movie Bot', description: 'Bot for finding and watching new movies — large database, category search, recommendation system', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
 };
