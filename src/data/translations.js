@@ -20,7 +20,7 @@ export const strings = {
     'hero.title1': "G'oyangizni",
     'hero.title2': 'Haqiqatga',
     'hero.title3': 'Aylantiraman',
-    'hero.subtitle': 'Sizning biznesingizni keyingi bosqichga olib chiqaman — tez, sifatli va arzon narxda',
+    'hero.subtitle': 'Sizning biznesingizni keyingi bosqichga olib chiqaman — tez, sifatli va professional',
     'hero.cta1': 'Loyiha Buyurtma Qilish',
     'hero.cta2': 'Xizmatlarimiz',
 
@@ -130,7 +130,7 @@ export const strings = {
     'hero.title1': 'Вашу идею',
     'hero.title2': 'воплощу в',
     'hero.title3': 'реальность',
-    'hero.subtitle': 'Выведу ваш бизнес на новый уровень — быстро, качественно и по доступной цене',
+    'hero.subtitle': 'Выведу ваш бизнес на новый уровень — быстро, качественно и профессионально',
     'hero.cta1': 'Заказать проект',
     'hero.cta2': 'Наши услуги',
 
@@ -231,7 +231,7 @@ export const strings = {
     'hero.title1': 'Turning Your',
     'hero.title2': 'Ideas Into',
     'hero.title3': 'Reality',
-    'hero.subtitle': "I'll take your business to the next level — fast, quality work at affordable prices",
+    'hero.subtitle': "I'll take your business to the next level — fast, professional and reliable",
     'hero.cta1': 'Order a Project',
     'hero.cta2': 'Our Services',
 
@@ -442,19 +442,19 @@ export const getPricing = (lang) =>
 const processText = {
   uz: [
     { step: '01', title: 'Murojaat', description: "Telegram orqali yozing — g'oyangizni aytib bering. Bepul maslahat olasiz.", duration: '1 soat' },
-    { step: '02', title: 'Tahlil & Narx', description: 'Loyihani tahlil qilib, aniq narx va muddat taklif qilaman.', duration: '1 kun' },
+    { step: '02', title: 'Tahlil & Reja', description: "Loyihani tahlil qilib, aniq muddat va bajariladigan ishlar ro'yxatini taklif qilaman.", duration: '1 kun' },
     { step: '03', title: 'Ishga Tushish', description: "Kelishilgandan so'ng darhol ishni boshlayman. Progress haqida xabar berib turaman.", duration: '1-10 kun' },
     { step: '04', title: 'Topshirish', description: 'Tayyor loyihani test qilib topshiraman. 30 kun bepul tuzatish kafolati.', duration: 'Tayyor!' },
   ],
   ru: [
     { step: '01', title: 'Обращение', description: 'Напишите в Telegram — расскажите вашу идею. Получите бесплатную консультацию.', duration: '1 час' },
-    { step: '02', title: 'Анализ и цена', description: 'Проанализирую проект и предложу точную цену и сроки.', duration: '1 день' },
+    { step: '02', title: 'Анализ и план', description: 'Проанализирую проект и предложу точный план работ и сроки.', duration: '1 день' },
     { step: '03', title: 'Разработка', description: 'После согласования сразу начну работу. Буду информировать о прогрессе.', duration: '1-10 дней' },
     { step: '04', title: 'Сдача', description: 'Протестирую и сдам готовый проект. 30 дней бесплатной гарантии.', duration: 'Готово!' },
   ],
   en: [
     { step: '01', title: 'Reach Out', description: 'Write on Telegram — tell me your idea. Get a free consultation.', duration: '1 hour' },
-    { step: '02', title: 'Analysis & Price', description: "I'll analyze the project and offer exact pricing and timeline.", duration: '1 day' },
+    { step: '02', title: 'Analysis & Plan', description: "I'll analyze the project and offer an exact work plan and timeline.", duration: '1 day' },
     { step: '03', title: 'Development', description: "After agreement, I start immediately. I'll keep you updated on progress.", duration: '1-10 days' },
     { step: '04', title: 'Delivery', description: "I'll test and deliver the finished project. 30 days free warranty.", duration: 'Done!' },
   ],
@@ -466,19 +466,19 @@ export const getProcessSteps = (lang) => processText[lang];
 const testimonialsText = {
   uz: [
     { name: 'Aziz R.', role: "Online do'kon egasi", text: "E-commerce bot yasatdim, juda tez va sifatli chiqdi. Mijozlarim botdan buyurtma berishni juda yoqtirishdi. Tavsiya qilaman!", rating: 5 },
-    { name: 'Nodira K.', role: 'Marketing mutaxassisi', text: "Kompaniyamiz uchun landing page yasatdi. Dizayni juda chiroyli, mobilda ham mukammal ishlaydi. Narxi ham hamyonbop.", rating: 5 },
+    { name: 'Nodira K.', role: 'Marketing mutaxassisi', text: "Kompaniyamiz uchun landing page yasatdi. Dizayni juda chiroyli, mobilda ham mukammal ishlaydi. Natija kutganimdan ham yaxshi chiqdi!", rating: 5 },
     { name: 'Sardor M.', role: 'Startup asoschisi', text: "CRM tizimi buyurtma qildim, 5 kunda tayyor bo'ldi. Ish jarayoni juda professional, doimo xabar berib turdi.", rating: 5 },
     { name: 'Dilshod T.', role: 'Taxi xizmati rahbari', text: "Taxi boti yasatdim, haydovchilar va yo'lovchilar uchun ajoyib tizim chiqdi. 3 oydan beri muammosiz ishlayapti.", rating: 5 },
   ],
   ru: [
     { name: 'Азиз Р.', role: 'Владелец интернет-магазина', text: 'Заказал E-commerce бота — быстро и качественно. Клиентам очень нравится заказывать через бота. Рекомендую!', rating: 5 },
-    { name: 'Нодира К.', role: 'Маркетинг специалист', text: 'Сделал лендинг для нашей компании. Красивый дизайн, отлично работает на мобильных. Цена тоже доступная.', rating: 5 },
+    { name: 'Нодира К.', role: 'Маркетинг специалист', text: 'Сделал лендинг для нашей компании. Красивый дизайн, отлично работает на мобильных. Результат превзошёл ожидания!', rating: 5 },
     { name: 'Сардор М.', role: 'Основатель стартапа', text: 'Заказал CRM систему, была готова за 5 дней. Очень профессиональный подход, всегда держал в курсе.', rating: 5 },
     { name: 'Дильшод Т.', role: 'Руководитель такси-сервиса', text: 'Заказал бота для такси — отличная система для водителей и пассажиров. Уже 3 месяца работает без сбоев.', rating: 5 },
   ],
   en: [
     { name: 'Aziz R.', role: 'Online store owner', text: 'Had an e-commerce bot built — fast and quality work. My customers love ordering through the bot. Highly recommend!', rating: 5 },
-    { name: 'Nodira K.', role: 'Marketing specialist', text: 'Built a landing page for our company. Beautiful design, works perfectly on mobile. Price was affordable too.', rating: 5 },
+    { name: 'Nodira K.', role: 'Marketing specialist', text: 'Built a landing page for our company. Beautiful design, works perfectly on mobile. The result exceeded my expectations!', rating: 5 },
     { name: 'Sardor M.', role: 'Startup founder', text: 'Ordered a CRM system, was ready in 5 days. Very professional process, always kept me updated.', rating: 5 },
     { name: 'Dilshod T.', role: 'Taxi service manager', text: 'Had a taxi bot built — amazing system for drivers and passengers. Running without issues for 3 months.', rating: 5 },
   ],
@@ -490,15 +490,15 @@ export const getTestimonials = (lang) => testimonialsText[lang];
 const faqsText = {
   uz: [
     { question: "Buyurtma qancha vaqtda tayyor bo'ladi?", answer: "Oddiy loyihalar (bot, landing page) 1-2 kunda, murakkab loyihalar (web ilova, Android) 5-10 kunda tayyor bo'ladi. Aniq muddatni loyihani ko'rgandan keyin aytaman." },
-    { question: 'Narxlar qanday belgilanadi?', answer: "Telegram bot — $50 dan boshlanadi, Web sayt — $80 dan, Android ilova — $200 dan. Aniq narx loyiha murakkabligiga bog'liq. Bepul maslahat olib, aniq narx bilib olishingiz mumkin." },
+    { question: 'Narxlar qanday belgilanadi?', answer: "Narx loyiha murakkabligiga qarab kelishiladi. Bepul maslahat olib, aniq narx bilib olishingiz mumkin — Telegram orqali yozing." },
     { question: "To'lov qanday amalga oshiriladi?", answer: "To'lov 50/50 tizimida — 50% oldindan, 50% loyiha tayyor bo'lgach. Kichik loyihalar uchun to'liq oldindan to'lov ham mumkin." },
-    { question: "Loyiha topshirilgandan keyin qo'llab-quvvatlash bormi?", answer: "Ha! Har bir loyiha topshirilgandan keyin 30 kun bepul tuzatish va qo'llab-quvvatlash kafolati beriladi. Keyin ham arzon narxda xizmat davom etadi." },
+    { question: "Loyiha topshirilgandan keyin qo'llab-quvvatlash bormi?", answer: "Ha! Har bir loyiha topshirilgandan keyin 30 kun bepul tuzatish va qo'llab-quvvatlash kafolati beriladi. Keyin ham xizmat davom etadi." },
     { question: "Source kodni olsam bo'ladimi?", answer: "Albatta! Loyiha to'liq topshirilganda barcha source kodlar, database va hujjatlar sizga beriladi. Siz to'liq egalik qilasiz." },
     { question: "Agar natija yoqmasa nima bo'ladi?", answer: "Har bir bosqichda natijani ko'rsataman va tasdiqlaysiz. Agar biror narsa yoqmasa, bepul qayta ishlayman. Mijoz mamnunligi — birinchi o'rinda." },
   ],
   ru: [
     { question: 'Сколько времени занимает выполнение заказа?', answer: 'Простые проекты (бот, лендинг) — 1-2 дня, сложные (веб-приложение, Android) — 5-10 дней. Точные сроки скажу после оценки проекта.' },
-    { question: 'Как формируются цены?', answer: 'Telegram бот — от $50, Веб-сайт — от $80, Android приложение — от $200. Точная цена зависит от сложности проекта. Получите бесплатную консультацию.' },
+    { question: 'Как формируются цены?', answer: 'Цена определяется индивидуально в зависимости от сложности проекта. Напишите в Telegram — получите бесплатную консультацию и точную стоимость.' },
     { question: 'Как происходит оплата?', answer: 'Оплата по системе 50/50 — 50% предоплата, 50% после готовности проекта. Для маленьких проектов возможна полная предоплата.' },
     { question: 'Есть ли поддержка после сдачи проекта?', answer: 'Да! 30 дней бесплатных правок и поддержки после сдачи каждого проекта. Затем поддержка продолжается по доступной цене.' },
     { question: 'Могу ли я получить исходный код?', answer: 'Конечно! При полной сдаче проекта вы получаете весь исходный код, базу данных и документацию. Вы являетесь полным владельцем.' },
@@ -506,7 +506,7 @@ const faqsText = {
   ],
   en: [
     { question: 'How long does an order take to complete?', answer: 'Simple projects (bot, landing page) take 1-2 days, complex projects (web app, Android) take 5-10 days. I\'ll give exact timeline after evaluating the project.' },
-    { question: 'How are prices determined?', answer: 'Telegram bot — from $50, Website — from $80, Android app — from $200. Exact price depends on project complexity. Get a free consultation.' },
+    { question: 'How are prices determined?', answer: 'Pricing is determined individually based on project complexity. Write on Telegram — get a free consultation and exact quote.' },
     { question: 'How does payment work?', answer: 'Payment is 50/50 — 50% upfront, 50% after project completion. Full upfront payment is also possible for small projects.' },
     { question: 'Is there support after project delivery?', answer: 'Yes! 30 days of free fixes and support after delivery of each project. After that, support continues at affordable rates.' },
     { question: 'Can I get the source code?', answer: 'Absolutely! Upon full project delivery, you receive all source code, database, and documentation. You have full ownership.' },
