@@ -1,6 +1,6 @@
 import {
-  Bot, Globe, Smartphone, Star, Crown, ShoppingCart,
-  MessageCircle, Send, BarChart3,
+  Bot, Globe, Smartphone, Star, ShoppingCart,
+  MessageCircle, Send, BarChart3, Clapperboard,
 } from 'lucide-react';
 
 // ─── Simple UI strings ───────────────────────────────────────────
@@ -372,12 +372,12 @@ export const skills = [
 
 // ─── Services ────────────────────────────────────────────────────
 const servicesConfig = [
-  { icon: Bot, color: 'from-blue-500 to-cyan-500', bgColor: 'bg-blue-500/10' },
-  { icon: Globe, color: 'from-purple-500 to-pink-500', bgColor: 'bg-purple-500/10' },
-  { icon: Smartphone, color: 'from-green-500 to-emerald-500', bgColor: 'bg-green-500/10' },
-  { icon: Star, color: 'from-yellow-500 to-orange-500', bgColor: 'bg-yellow-500/10' },
-  { icon: Crown, color: 'from-indigo-500 to-violet-500', bgColor: 'bg-indigo-500/10' },
-  { icon: ShoppingCart, color: 'from-rose-500 to-red-500', bgColor: 'bg-rose-500/10' },
+  { icon: Bot,          color: 'from-blue-500 to-cyan-500',    bgColor: 'bg-blue-500/10' },
+  { icon: Globe,        color: 'from-purple-500 to-pink-500',  bgColor: 'bg-purple-500/10' },
+  { icon: Smartphone,   color: 'from-green-500 to-emerald-500',bgColor: 'bg-green-500/10' },
+  { icon: Star,         color: 'from-yellow-500 to-orange-500',bgColor: 'bg-yellow-500/10' },
+  { icon: ShoppingCart, color: 'from-rose-500 to-red-500',     bgColor: 'bg-rose-500/10' },
+  { icon: Clapperboard, color: 'from-fuchsia-500 to-pink-500', bgColor: 'bg-fuchsia-500/10' },
 ];
 
 const servicesText = {
@@ -385,25 +385,25 @@ const servicesText = {
     { title: 'Telegram Bot', description: "Har qanday murakkablikdagi Telegram botlar yaratish — avtomatlashtirish, CRM, to'lov tizimlari, inline botlar", features: ['Inline botlar', "To'lov integratsiya", 'Admin panel', 'Auto-javob tizimi'] },
     { title: 'Web Saytlar', description: 'Zamonaviy, tezkor va mobil-friendly veb saytlar — landing page, portfolio, e-commerce', features: ['React / Next.js', 'Responsive dizayn', 'SEO optimizatsiya', 'Admin panel'] },
     { title: 'Android Ilovalar', description: "Android uchun native va cross-platform mobil ilovalar — xabarlar, do'konlar, xizmatlar", features: ['React Native', 'Push bildirishnomalar', 'Offline rejim', 'Play Store nashr'] },
-    { title: 'Telegram Stars', description: "Telegram Stars integratsiyasi — kontentni monetizatsiya qilish va to'lov qabul qilish", features: ["Stars to'lov", 'Premium kontent', 'Obuna tizimi', 'Statistika'] },
-    { title: 'Telegram Premium', description: 'Telegram Premium xizmatlari — premium funksiyalar va maxsus imkoniyatlar', features: ['Premium hadya', 'Maxsus stiker', 'Kengaytirilgan limitlar', 'Premium bot'] },
+    { title: 'Telegram Stars & Premium', description: "Telegram Stars integratsiyasi va Premium xizmatlar — kontentni monetizatsiya, to'lov tizimi va maxsus imkoniyatlar", features: ["Stars to'lov tizimi", 'Premium hadya & kontent', 'Obuna tizimi', 'Premium bot'] },
     { title: 'E-Commerce', description: "Telegram va Web uchun onlayn do'kon tizimlari — to'liq avtomatlashtirilgan", features: ['Mahsulot katalog', "To'lov gateway", 'Buyurtma tracking', 'Analitika'] },
+    { title: 'Video Ishlab Chiqarish', description: "5+ yillik tajriba bilan professional video suratga olish va montaj — har qanday darajadagi video kontent yaratish", features: ['Professional suratga olish', 'Kino darajali montaj', 'Motion graphics', 'Rangli korreksiya'] },
   ],
   ru: [
     { title: 'Telegram Бот', description: 'Создание Telegram ботов любой сложности — автоматизация, CRM, платёжные системы, inline боты', features: ['Inline боты', 'Интеграция оплаты', 'Админ панель', 'Авто-ответы'] },
     { title: 'Веб-Сайты', description: 'Современные, быстрые и мобильные сайты — лендинги, портфолио, интернет-магазины', features: ['React / Next.js', 'Адаптивный дизайн', 'SEO оптимизация', 'Админ панель'] },
     { title: 'Android Приложения', description: 'Native и кроссплатформенные мобильные приложения для Android', features: ['React Native', 'Push уведомления', 'Офлайн режим', 'Публикация в Play Store'] },
-    { title: 'Telegram Stars', description: 'Интеграция Telegram Stars — монетизация контента и приём платежей', features: ['Оплата Stars', 'Премиум контент', 'Система подписки', 'Статистика'] },
-    { title: 'Telegram Premium', description: 'Услуги Telegram Premium — премиум функции и особые возможности', features: ['Премиум подарок', 'Особые стикеры', 'Расширенные лимиты', 'Премиум бот'] },
+    { title: 'Telegram Stars & Premium', description: 'Интеграция Telegram Stars и Premium услуги — монетизация контента, платёжная система и особые возможности', features: ['Система оплаты Stars', 'Премиум подарки & контент', 'Система подписки', 'Премиум бот'] },
     { title: 'E-Commerce', description: 'Интернет-магазины для Telegram и Web — полностью автоматизированные', features: ['Каталог товаров', 'Платёжный шлюз', 'Отслеживание заказов', 'Аналитика'] },
+    { title: 'Видео Продакшн', description: 'Профессиональная видеосъёмка и монтаж с опытом 5+ лет — создание видеоконтента любого уровня сложности', features: ['Профессиональная съёмка', 'Монтаж кино-уровня', 'Motion graphics', 'Цветокоррекция'] },
   ],
   en: [
     { title: 'Telegram Bot', description: 'Creating Telegram bots of any complexity — automation, CRM, payment systems, inline bots', features: ['Inline bots', 'Payment integration', 'Admin panel', 'Auto-reply system'] },
     { title: 'Websites', description: 'Modern, fast, and mobile-friendly websites — landing pages, portfolios, e-commerce', features: ['React / Next.js', 'Responsive design', 'SEO optimization', 'Admin panel'] },
     { title: 'Android Apps', description: 'Native and cross-platform mobile apps for Android — messaging, stores, services', features: ['React Native', 'Push notifications', 'Offline mode', 'Play Store publish'] },
-    { title: 'Telegram Stars', description: 'Telegram Stars integration — content monetization and payment acceptance', features: ['Stars payment', 'Premium content', 'Subscription system', 'Statistics'] },
-    { title: 'Telegram Premium', description: 'Telegram Premium services — premium features and special capabilities', features: ['Premium gift', 'Custom stickers', 'Extended limits', 'Premium bot'] },
+    { title: 'Telegram Stars & Premium', description: 'Telegram Stars integration and Premium services — content monetization, payment system and special capabilities', features: ['Stars payment system', 'Premium gifts & content', 'Subscription system', 'Premium bot'] },
     { title: 'E-Commerce', description: 'Online store systems for Telegram and Web — fully automated', features: ['Product catalog', 'Payment gateway', 'Order tracking', 'Analytics'] },
+    { title: 'Video Production', description: 'Professional video shooting and editing with 5+ years of experience — creating video content of any complexity', features: ['Professional filming', 'Cinema-grade editing', 'Motion graphics', 'Color grading'] },
   ],
 };
 
