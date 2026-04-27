@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getProjects } from '../data/translations';
 
@@ -66,13 +66,26 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 text-primary-light text-sm font-medium hover:gap-3 transition-all"
-                >
-                  {t('projects.order_similar')}
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <div className="flex items-center justify-between">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-primary-light text-sm font-medium hover:gap-3 transition-all"
+                  >
+                    {t('projects.order_similar')}
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-xs font-medium transition-colors border border-white/10 hover:border-white/30 rounded-lg px-3 py-1.5"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      {t('projects.view')}
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}

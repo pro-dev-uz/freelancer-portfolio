@@ -77,6 +77,7 @@ export const strings = {
     'projects.title2': 'Loyihalar',
     'projects.subtitle': 'Muvaffaqiyatli tugatilgan loyihalardan namunalar',
     'projects.order_similar': "Shunga o'xshash buyurtma",
+    'projects.view': "Ko'rish",
 
     // Testimonials
     'testimonials.tag': 'Sharhlar',
@@ -181,6 +182,7 @@ export const strings = {
     'projects.title2': 'Проекты',
     'projects.subtitle': 'Примеры успешно завершённых проектов',
     'projects.order_similar': 'Заказать похожий',
+    'projects.view': 'Посмотреть',
 
     'testimonials.tag': 'Отзывы',
     'testimonials.title1': 'Мнение',
@@ -281,6 +283,7 @@ export const strings = {
     'projects.title2': 'Projects',
     'projects.subtitle': 'Examples of successfully completed projects',
     'projects.order_similar': 'Order similar',
+    'projects.view': 'View',
 
     'testimonials.tag': 'Reviews',
     'testimonials.title1': 'Client',
@@ -515,38 +518,34 @@ export const getFaqs = (lang) => faqsText[lang];
 
 // ─── Projects ────────────────────────────────────────────────────
 const projectsConfig = [
-  { icon: ShoppingCart, color: 'from-blue-500 to-cyan-400' },
-  { icon: Globe, color: 'from-purple-500 to-pink-400' },
-  { icon: Send, color: 'from-green-500 to-emerald-400' },
-  { icon: Star, color: 'from-yellow-500 to-orange-400' },
-  { icon: BarChart3, color: 'from-indigo-500 to-violet-400' },
-  { icon: MessageCircle, color: 'from-rose-500 to-red-400' },
+  { icon: Globe,         color: 'from-blue-500 to-cyan-400',     link: 'https://arif.uz' },
+  { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/arif_uzbot' },
+  { icon: Star,          color: 'from-pink-500 to-rose-400',     link: 'https://tennou.uz' },
+  { icon: ShoppingCart,  color: 'from-green-500 to-emerald-400', link: 'https://t.me/olibketuz_bot' },
+  { icon: MessageCircle, color: 'from-yellow-500 to-orange-400', link: 'https://t.me/kino_yangi_bot' },
 ];
 
 const projectsText = {
   uz: [
-    { title: 'E-Commerce Telegram Bot', description: "To'liq avtomatlashtirilgan onlayn do'kon boti — katalog, savat, to'lov va yetkazib berish kuzatuvi", tags: ['Telegram Bot', 'Python', 'PostgreSQL'] },
-    { title: 'Business Landing Page', description: 'Zamonaviy kompaniya uchun responsive landing page — animatsiyalar va SEO optimizatsiya', tags: ['React', 'Tailwind', 'Framer Motion'] },
-    { title: 'Taxi Buyurtma Boti', description: "Taxi xizmatini boshqarish uchun bot — haydovchi va yo'lovchi paneli, GPS tracking", tags: ['Telegram Bot', 'Node.js', 'MongoDB'] },
-    { title: 'Kino Izlash Boti', description: 'Kino izlash va yuklab olish boti — kategoriyalar, reyting, tavfsiya tizimi', tags: ['Telegram Bot', 'Python', 'API'] },
-    { title: 'CRM Web Ilova', description: 'Mijozlar bilan ishlash tizimi — analitika dashboard, hisobot va avtomatlashtirish', tags: ['React', 'Node.js', 'PostgreSQL'] },
-    { title: 'Android Xabar Ilovasi', description: 'Real-time xabar almashish ilovasi — guruhlar, media yuborish, push bildirishnomalar', tags: ['React Native', 'Firebase', 'WebSocket'] },
+    { title: 'Arif.uz — Solar Web Sayt', description: "Quyosh panellari kompaniyasi uchun zamonaviy web sayt — mahsulot katalogi, narxlar, bog'lanish formasi va SEO optimizatsiya", tags: ['Next.js', 'Tailwind', 'Prisma'] },
+    { title: '@arif_uzbot — Telegram Bot', description: "Arif.uz kompaniyasi uchun Telegram bot — mahsulotlar katalogi, narx so'rash, menejer bilan bog'lanish va buyurtma berish", tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: 'Tennou.uz — Web Sayt', description: "Zamonaviy dizaynli korporativ web sayt — animatsiyalar, responsive dizayn va tez yuklanish tezligi", tags: ['React', 'Tailwind', 'Vite'] },
+    { title: '@olibketuz_bot — Buyurtma Boti', description: "Onlayn xarid va yetkazib berish boti — mahsulotlar katalogi, savat, buyurtma kuzatish tizimi", tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: '@kino_yangi_bot — Kino Boti', description: "Yangi kinolarni izlash va ko'rish boti — katta baza, kategoriyalar bo'yicha qidirish, tavsiya tizimi", tags: ['Telegram Bot', 'Python', 'API'] },
   ],
   ru: [
-    { title: 'E-Commerce Telegram Бот', description: 'Полностью автоматизированный бот интернет-магазина — каталог, корзина, оплата и отслеживание доставки', tags: ['Telegram Bot', 'Python', 'PostgreSQL'] },
-    { title: 'Бизнес Лендинг', description: 'Адаптивный лендинг для современной компании — анимации и SEO оптимизация', tags: ['React', 'Tailwind', 'Framer Motion'] },
-    { title: 'Бот Заказа Такси', description: 'Бот для управления такси-сервисом — панель водителя и пассажира, GPS трекинг', tags: ['Telegram Bot', 'Node.js', 'MongoDB'] },
-    { title: 'Бот Поиска Фильмов', description: 'Бот для поиска и скачивания фильмов — категории, рейтинг, рекомендации', tags: ['Telegram Bot', 'Python', 'API'] },
-    { title: 'CRM Веб-Приложение', description: 'Система управления клиентами — аналитика, отчёты и автоматизация', tags: ['React', 'Node.js', 'PostgreSQL'] },
-    { title: 'Android Мессенджер', description: 'Приложение для обмена сообщениями — группы, медиа, push уведомления', tags: ['React Native', 'Firebase', 'WebSocket'] },
+    { title: 'Arif.uz — Solar Сайт', description: 'Современный веб-сайт для компании солнечных панелей — каталог продуктов, цены, форма обратной связи и SEO', tags: ['Next.js', 'Tailwind', 'Prisma'] },
+    { title: '@arif_uzbot — Telegram Бот', description: 'Telegram-бот для компании Arif.uz — каталог продуктов, запрос цен, связь с менеджером и оформление заказа', tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: 'Tennou.uz — Веб-Сайт', description: 'Корпоративный сайт с современным дизайном — анимации, адаптивность и высокая скорость загрузки', tags: ['React', 'Tailwind', 'Vite'] },
+    { title: '@olibketuz_bot — Бот Заказов', description: 'Бот для онлайн-покупок и доставки — каталог товаров, корзина, система отслеживания заказов', tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: '@kino_yangi_bot — Кино Бот', description: 'Бот для поиска и просмотра новых фильмов — большая база, поиск по категориям, система рекомендаций', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
   en: [
-    { title: 'E-Commerce Telegram Bot', description: 'Fully automated online store bot — catalog, cart, payment and delivery tracking', tags: ['Telegram Bot', 'Python', 'PostgreSQL'] },
-    { title: 'Business Landing Page', description: 'Responsive landing page for a modern company — animations and SEO optimization', tags: ['React', 'Tailwind', 'Framer Motion'] },
-    { title: 'Taxi Ordering Bot', description: 'Bot for taxi service management — driver and passenger panels, GPS tracking', tags: ['Telegram Bot', 'Node.js', 'MongoDB'] },
-    { title: 'Movie Search Bot', description: 'Movie search and download bot — categories, ratings, recommendation system', tags: ['Telegram Bot', 'Python', 'API'] },
-    { title: 'CRM Web App', description: 'Customer management system — analytics dashboard, reports and automation', tags: ['React', 'Node.js', 'PostgreSQL'] },
-    { title: 'Android Messenger', description: 'Real-time messaging app — groups, media sharing, push notifications', tags: ['React Native', 'Firebase', 'WebSocket'] },
+    { title: 'Arif.uz — Solar Website', description: 'Modern website for a solar panel company — product catalog, pricing, contact form and SEO optimization', tags: ['Next.js', 'Tailwind', 'Prisma'] },
+    { title: '@arif_uzbot — Telegram Bot', description: 'Telegram bot for Arif.uz — product catalog, price inquiry, manager contact and order placement', tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: 'Tennou.uz — Website', description: 'Corporate website with modern design — animations, responsive layout and fast loading speed', tags: ['React', 'Tailwind', 'Vite'] },
+    { title: '@olibketuz_bot — Order Bot', description: 'Online shopping and delivery bot — product catalog, cart, order tracking system', tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: '@kino_yangi_bot — Movie Bot', description: 'Bot for finding and watching new movies — large database, category search, recommendation system', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
 };
 
