@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yourdomain.com/sitemap.xml
+# Sitemaps
+Sitemap: https://pro-dev.uz/sitemap.xml
+
+# Crawl-delay (optional, helps server load)
+Crawl-delay: 1

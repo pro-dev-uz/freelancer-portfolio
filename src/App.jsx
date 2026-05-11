@@ -1,5 +1,6 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import SEOHead from './components/SEOHead';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,6 +16,7 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
+        <SEOHead />
         <div className="min-h-screen bg-dark">
           <Navbar />
           <main>
