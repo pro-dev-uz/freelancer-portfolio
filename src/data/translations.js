@@ -518,38 +518,46 @@ export const getFaqs = (lang) => faqsText[lang];
 
 // ─── Projects ────────────────────────────────────────────────────
 const projectsConfig = [
+  // ── TOP ROW — Web saytlar ──────────────────────────────────────────
   { icon: Globe,         color: 'from-blue-500 to-cyan-400',     link: 'https://arif.uz' },
-  { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/arif_uzbot' },
+  { icon: Leaf,          color: 'from-lime-500 to-green-400',    link: 'https://www.idealagrohimoya.uz' },
   { icon: Star,          color: 'from-pink-500 to-rose-400',     link: 'https://tennou.uz' },
+  // ── BOTTOM ROW — Telegram botlar ──────────────────────────────────
+  { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/arif_uzbot' },
   { icon: ShoppingCart,  color: 'from-green-500 to-emerald-400', link: 'https://t.me/olibketuz_bot' },
   { icon: MessageCircle, color: 'from-yellow-500 to-orange-400', link: 'https://t.me/kino_yangi_bot' },
-  { icon: Leaf,          color: 'from-lime-500 to-green-400',    link: 'https://www.idealagrohimoya.uz' },
 ];
 
 const projectsText = {
   uz: [
+    // top row — web saytlar
     { title: 'Arif.uz — Solar Web Sayt', description: "Quyosh panellari kompaniyasi uchun zamonaviy web sayt — mahsulot katalogi, narxlar, bog'lanish formasi va SEO optimizatsiya", tags: ['Next.js', 'Tailwind', 'Prisma'] },
-    { title: '@arif_uzbot — Telegram Bot', description: "Arif.uz kompaniyasi uchun Telegram bot — mahsulotlar katalogi, narx so'rash, menejer bilan bog'lanish va buyurtma berish", tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: 'Ideal Agro Himoya — Agro Sayt', description: "Fermerlar uchun sertifikatlangan agro-himoya tizimi — akaritsidlar, insektitsidlar, fungitsidlar, herbitsidlar va o'g'itlar katalogi, ISO 9001 sertifikatlangan", tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Tennou.uz — Konsalting Sayt', description: "Chet elda o'qishga yordam beruvchi Tennou Consulting kompaniyasi uchun web sayt — universitetlar, dasturlar va ariza jarayoni", tags: ['React', 'Tailwind', 'Vite'] },
+    // bottom row — telegram botlar
+    { title: '@arif_uzbot — Telegram Bot', description: "Arif.uz kompaniyasi uchun Telegram bot — mahsulotlar katalogi, narx so'rash, menejer bilan bog'lanish va buyurtma berish", tags: ['Telegram Bot', 'Python', 'aiogram'] },
     { title: '@olibketuz_bot — Taxi Boti', description: "Viloyatlar bo'yicha haydovchilar uchun taxi buyurtma boti — yo'nalishlar, narxlar va buyurtmalarni boshqarish tizimi", tags: ['Telegram Bot', 'Python', 'SQLite'] },
     { title: '@kino_yangi_bot — Kino Boti', description: "Yangi kinolarni izlash va ko'rish boti — katta baza, kategoriyalar bo'yicha qidirish, tavsiya tizimi", tags: ['Telegram Bot', 'Python', 'API'] },
-    { title: 'Ideal Agro Himoya — Agro Sayt', description: "Fermerlar uchun sertifikatlangan agro-himoya tizimi — akaritsidlar, insektitsidlar, fungitsidlar, herbitsidlar va o'g'itlar katalogi, ISO 9001 sertifikatlangan", tags: ['React', 'Tailwind', 'Vite'] },
   ],
   ru: [
+    // top row — сайты
     { title: 'Arif.uz — Solar Сайт', description: 'Современный веб-сайт для компании солнечных панелей — каталог продуктов, цены, форма обратной связи и SEO', tags: ['Next.js', 'Tailwind', 'Prisma'] },
-    { title: '@arif_uzbot — Telegram Бот', description: 'Telegram-бот для компании Arif.uz — каталог продуктов, запрос цен, связь с менеджером и оформление заказа', tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: 'Ideal Agro Himoya — Агро Сайт', description: 'Сертифицированная система агро-защиты для фермеров — акарициды, инсектициды, фунгициды, гербициды и удобрения, сертификация ISO 9001', tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Tennou.uz — Консалтинг Сайт', description: 'Сайт для компании Tennou Consulting — помощь в поступлении за рубеж, университеты, программы и процесс подачи заявки', tags: ['React', 'Tailwind', 'Vite'] },
+    // bottom row — боты
+    { title: '@arif_uzbot — Telegram Бот', description: 'Telegram-бот для компании Arif.uz — каталог продуктов, запрос цен, связь с менеджером и оформление заказа', tags: ['Telegram Bot', 'Python', 'aiogram'] },
     { title: '@olibketuz_bot — Такси Бот', description: 'Бот заказа такси для водителей по регионам — маршруты, цены и система управления заказами', tags: ['Telegram Bot', 'Python', 'SQLite'] },
     { title: '@kino_yangi_bot — Кино Бот', description: 'Бот для поиска и просмотра новых фильмов — большая база, поиск по категориям, система рекомендаций', tags: ['Telegram Bot', 'Python', 'API'] },
-    { title: 'Ideal Agro Himoya — Агро Сайт', description: 'Сертифицированная система агро-защиты для фермеров — акарициды, инсектициды, фунгициды, гербициды и удобрения, сертификация ISO 9001', tags: ['React', 'Tailwind', 'Vite'] },
   ],
   en: [
+    // top row — websites
     { title: 'Arif.uz — Solar Website', description: 'Modern website for a solar panel company — product catalog, pricing, contact form and SEO optimization', tags: ['Next.js', 'Tailwind', 'Prisma'] },
-    { title: '@arif_uzbot — Telegram Bot', description: 'Telegram bot for Arif.uz — product catalog, price inquiry, manager contact and order placement', tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: 'Ideal Agro Himoya — Agro Site', description: 'Certified agro-protection system for farmers — acaricides, insecticides, fungicides, herbicides and fertilizers catalog, ISO 9001 certified', tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Tennou.uz — Consulting Site', description: 'Website for Tennou Consulting — helping students study abroad, universities, programs and application process', tags: ['React', 'Tailwind', 'Vite'] },
+    // bottom row — bots
+    { title: '@arif_uzbot — Telegram Bot', description: 'Telegram bot for Arif.uz — product catalog, price inquiry, manager contact and order placement', tags: ['Telegram Bot', 'Python', 'aiogram'] },
     { title: '@olibketuz_bot — Taxi Bot', description: 'Taxi ordering bot for drivers by regions — routes, pricing and order management system', tags: ['Telegram Bot', 'Python', 'SQLite'] },
     { title: '@kino_yangi_bot — Movie Bot', description: 'Bot for finding and watching new movies — large database, category search, recommendation system', tags: ['Telegram Bot', 'Python', 'API'] },
-    { title: 'Ideal Agro Himoya — Agro Site', description: 'Certified agro-protection system for farmers — acaricides, insecticides, fungicides, herbicides and fertilizers catalog, ISO 9001 certified', tags: ['React', 'Tailwind', 'Vite'] },
   ],
 };
 
