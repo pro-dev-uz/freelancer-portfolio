@@ -1,0 +1,10 @@
+Bu fayl Google Search Console verification uchun placeholder.
+Quyidagi ko'rsatmalarni bajaring (bir marta qilish kifoya):
+
+1. https://search.google.com/search-console/ ga kiring
+2. "Add property" bosingva "URL prefix" da https://pro-dev.uz/ kiriting
+3. "HTML tag" usulini tanlang
+4. Google bergan meta tagni (masalan: <meta name="google-site-verification" content="XXXX" />)
+   index.html fayliga <head> ichiga qo'shing
+5. "Verify" bosing
+6. Keyin "Sitemaps" bo'limiga kiring va https://pro-dev.uz/sitemap.xml qo'shing
