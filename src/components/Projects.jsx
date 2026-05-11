@@ -35,11 +35,16 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6">
           {projects.map((project, i) => {
-            const isBottom = i >= 3;
-            const isFirstBottom = i === 3;
-            const colClass = isBottom
-              ? `lg:col-span-2${isFirstBottom ? ' lg:col-start-2' : ''}`
-              : 'lg:col-span-2';
+            const total = projects.length;
+            const lastRowCount = total % 3;
+            const isLastRow = i >= total - lastRowCount && lastRowCount !== 0;
+            const isFirstOfLastRow = i === total - lastRowCount;
+            let colClass = 'lg:col-span-2';
+            if (isLastRow) {
+              if (lastRowCount === 1) colClass = 'lg:col-span-2 lg:col-start-3';
+              else if (lastRowCount === 2 && isFirstOfLastRow) colClass = 'lg:col-span-2 lg:col-start-2';
+              else colClass = 'lg:col-span-2';
+            }
             return (
             <motion.div
               key={project.title}
