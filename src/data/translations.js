@@ -1,6 +1,6 @@
 import {
   Bot, Globe, Smartphone, Star, ShoppingCart,
-  MessageCircle, Send, BarChart3, Clapperboard, Leaf,
+  MessageCircle, Send, BarChart3, Clapperboard, Leaf, FileText,
 } from 'lucide-react';
 
 // ─── Simple UI strings ───────────────────────────────────────────
@@ -524,7 +524,7 @@ const projectsConfig = [
   { icon: Star,          color: 'from-pink-500 to-rose-400',     link: 'https://koreyapro.uz' },
   // ── BOTTOM ROW — Telegram botlar ──────────────────────────────────
   { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/arif_uzbot' },
-  { icon: ShoppingCart,  color: 'from-green-500 to-emerald-400', link: 'https://t.me/olibketuz_bot' },
+  { icon: FileText,      color: 'from-green-500 to-emerald-400', link: 'https://t.me/avtohujjat_bot' },
   { icon: MessageCircle, color: 'from-yellow-500 to-orange-400', link: 'https://t.me/kino_yangi_bot' },
 ];
 
@@ -536,7 +536,7 @@ const projectsText = {
     { title: 'Koreyapro.uz — Konsalting Sayt', description: "Andijondagi Koreya Pro Center uchun zamonaviy ko'p tilli web sayt — koreys tili kurslari, Koreyaga o'qishga yo'naltirish, viza va universitetlarga qabul jarayoni", tags: ['Next.js', 'Tailwind', 'Three.js'] },
     // bottom row — telegram botlar
     { title: '@arif_uzbot — Telegram Bot', description: "Arif.uz kompaniyasi uchun Telegram bot — mahsulotlar katalogi, narx so'rash, menejer bilan bog'lanish va buyurtma berish", tags: ['Telegram Bot', 'Python', 'aiogram'] },
-    { title: '@olibketuz_bot — Taxi Boti', description: "Viloyatlar bo'yicha haydovchilar uchun taxi buyurtma boti — yo'nalishlar, narxlar va buyurtmalarni boshqarish tizimi", tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: '@avtohujjat_bot — Transport Hujjat Boti', description: "Transport firmalari uchun avtomatik hujjat (ishonchnoma/putyovka) generator boti — firma+parol bilan kirish, moshina va haydovchilar bazasi (Excel orqali), tayyor Word DOCX hujjat", tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
     { title: '@kino_yangi_bot — Kino Boti', description: "Yangi kinolarni izlash va ko'rish boti — katta baza, kategoriyalar bo'yicha qidirish, tavsiya tizimi", tags: ['Telegram Bot', 'Python', 'API'] },
   ],
   ru: [
@@ -546,7 +546,7 @@ const projectsText = {
     { title: 'Koreyapro.uz — Консалтинг Сайт', description: 'Современный многоязычный сайт для Koreya Pro Center (Андижан) — курсы корейского языка, консалтинг по обучению в Корее, виза и поступление в университеты', tags: ['Next.js', 'Tailwind', 'Three.js'] },
     // bottom row — боты
     { title: '@arif_uzbot — Telegram Бот', description: 'Telegram-бот для компании Arif.uz — каталог продуктов, запрос цен, связь с менеджером и оформление заказа', tags: ['Telegram Bot', 'Python', 'aiogram'] },
-    { title: '@olibketuz_bot — Такси Бот', description: 'Бот заказа такси для водителей по регионам — маршруты, цены и система управления заказами', tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: '@avtohujjat_bot — Бот транспортных документов', description: 'Бот для автоматической генерации транспортных документов (доверенность/путевой лист) — вход по компании+паролю, база машин и водителей (через Excel), готовый Word DOCX документ', tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
     { title: '@kino_yangi_bot — Кино Бот', description: 'Бот для поиска и просмотра новых фильмов — большая база, поиск по категориям, система рекомендаций', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
   en: [
@@ -556,7 +556,7 @@ const projectsText = {
     { title: 'Koreyapro.uz — Consulting Site', description: 'Modern multilingual website for Koreya Pro Center (Andijan) — Korean language courses, study-in-Korea consulting, visa support and university admissions', tags: ['Next.js', 'Tailwind', 'Three.js'] },
     // bottom row — bots
     { title: '@arif_uzbot — Telegram Bot', description: 'Telegram bot for Arif.uz — product catalog, price inquiry, manager contact and order placement', tags: ['Telegram Bot', 'Python', 'aiogram'] },
-    { title: '@olibketuz_bot — Taxi Bot', description: 'Taxi ordering bot for drivers by regions — routes, pricing and order management system', tags: ['Telegram Bot', 'Python', 'SQLite'] },
+    { title: '@avtohujjat_bot — Transport Document Bot', description: 'Auto-document (waybill/proxy) generator bot for transport companies — login by firm+password, vehicle and driver database (via Excel), ready-to-use Word DOCX document', tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
     { title: '@kino_yangi_bot — Movie Bot', description: 'Bot for finding and watching new movies — large database, category search, recommendation system', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
 };
