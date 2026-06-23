@@ -9,9 +9,9 @@ const LANG_LABELS = { uz: "O'z", ru: 'Ру', en: 'En' };
 export function LanguageProvider({ children }) {
   const [lang, setLang] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('lang') || 'uz';
+      return localStorage.getItem('lang') || 'en';
     }
-    return 'uz';
+    return 'en';
   });
 
   const changeLang = useCallback((newLang) => {
