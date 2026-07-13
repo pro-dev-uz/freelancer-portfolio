@@ -523,7 +523,7 @@ const projectsConfig = [
   { icon: Leaf,          color: 'from-lime-500 to-green-400',    link: 'https://www.idealagrohimoya.uz' },
   { icon: Star,          color: 'from-pink-500 to-rose-400',     link: 'https://koreyapro.uz' },
   // ── BOTTOM ROW — Telegram botlar ──────────────────────────────────
-  { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/arif_uzbot' },
+  { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/ilimbilimBot' },
   { icon: FileText,      color: 'from-green-500 to-emerald-400', link: 'https://t.me/avtohujjat_bot' },
   { icon: MessageCircle, color: 'from-yellow-500 to-orange-400', link: 'https://t.me/kino_yangi_bot' },
 ];
@@ -535,7 +535,7 @@ const projectsText = {
     { title: 'Ideal Agro Himoya — Agro Sayt', description: "Fermerlar uchun sertifikatlangan agro-himoya tizimi — akaritsidlar, insektitsidlar, fungitsidlar, herbitsidlar va o'g'itlar katalogi, ISO 9001 sertifikatlangan", tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Koreyapro.uz — Konsalting Sayt', description: "Andijondagi Koreya Pro Center uchun zamonaviy ko'p tilli web sayt — koreys tili kurslari, Koreyaga o'qishga yo'naltirish, viza va universitetlarga qabul jarayoni", tags: ['Next.js', 'Tailwind', 'Three.js'] },
     // bottom row — telegram botlar
-    { title: '@arif_uzbot — Telegram Bot', description: "Arif.uz kompaniyasi uchun Telegram bot — mahsulotlar katalogi, narx so'rash, menejer bilan bog'lanish va buyurtma berish", tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: '@ilimbilimBot — AI Talaba Yordamchisi', description: "Universitet talabalari uchun AI yordamchi bot — taqdimot, referat, kurs ishi, insho, test va boshqa 15+ xizmat; DOCX/PDF eksport, Telegram Mini App va Stars to'lov integratsiyasi", tags: ['aiogram', 'FastAPI', 'Gemini AI', 'Mini App'] },
     { title: '@avtohujjat_bot — Transport Hujjat Boti', description: "Transport firmalari uchun avtomatik hujjat (ishonchnoma/putyovka) generator boti — firma+parol bilan kirish, moshina va haydovchilar bazasi (Excel orqali), tayyor Word DOCX hujjat", tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
     { title: '@kino_yangi_bot — Kino Boti', description: "Yangi kinolarni izlash va ko'rish boti — katta baza, kategoriyalar bo'yicha qidirish, tavsiya tizimi", tags: ['Telegram Bot', 'Python', 'API'] },
   ],
@@ -545,7 +545,7 @@ const projectsText = {
     { title: 'Ideal Agro Himoya — Агро Сайт', description: 'Сертифицированная система агро-защиты для фермеров — акарициды, инсектициды, фунгициды, гербициды и удобрения, сертификация ISO 9001', tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Koreyapro.uz — Консалтинг Сайт', description: 'Современный многоязычный сайт для Koreya Pro Center (Андижан) — курсы корейского языка, консалтинг по обучению в Корее, виза и поступление в университеты', tags: ['Next.js', 'Tailwind', 'Three.js'] },
     // bottom row — боты
-    { title: '@arif_uzbot — Telegram Бот', description: 'Telegram-бот для компании Arif.uz — каталог продуктов, запрос цен, связь с менеджером и оформление заказа', tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: '@ilimbilimBot — AI Помощник Студента', description: 'AI-бот для студентов вузов — генерация презентаций, рефератов, курсовых, эссе, тестов и 15+ услуг; экспорт DOCX/PDF, Telegram Mini App и оплата через Stars', tags: ['aiogram', 'FastAPI', 'Gemini AI', 'Mini App'] },
     { title: '@avtohujjat_bot — Бот транспортных документов', description: 'Бот для автоматической генерации транспортных документов (доверенность/путевой лист) — вход по компании+паролю, база машин и водителей (через Excel), готовый Word DOCX документ', tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
     { title: '@kino_yangi_bot — Кино Бот', description: 'Бот для поиска и просмотра новых фильмов — большая база, поиск по категориям, система рекомендаций', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
@@ -555,7 +555,7 @@ const projectsText = {
     { title: 'Ideal Agro Himoya — Agro Site', description: 'Certified agro-protection system for farmers — acaricides, insecticides, fungicides, herbicides and fertilizers catalog, ISO 9001 certified', tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Koreyapro.uz — Consulting Site', description: 'Modern multilingual website for Koreya Pro Center (Andijan) — Korean language courses, study-in-Korea consulting, visa support and university admissions', tags: ['Next.js', 'Tailwind', 'Three.js'] },
     // bottom row — bots
-    { title: '@arif_uzbot — Telegram Bot', description: 'Telegram bot for Arif.uz — product catalog, price inquiry, manager contact and order placement', tags: ['Telegram Bot', 'Python', 'aiogram'] },
+    { title: '@ilimbilimBot — AI Student Assistant', description: 'AI-powered Telegram bot for university students — presentations, essays, coursework, tests and 15+ services; DOCX/PDF export, Telegram Mini App and Stars payment integration', tags: ['aiogram', 'FastAPI', 'Gemini AI', 'Mini App'] },
     { title: '@avtohujjat_bot — Transport Document Bot', description: 'Auto-document (waybill/proxy) generator bot for transport companies — login by firm+password, vehicle and driver database (via Excel), ready-to-use Word DOCX document', tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
     { title: '@kino_yangi_bot — Movie Bot', description: 'Bot for finding and watching new movies — large database, category search, recommendation system', tags: ['Telegram Bot', 'Python', 'API'] },
   ],
