@@ -96,10 +96,9 @@ export const strings = {
     'contact.title2': 'Boshlaylikmi?',
     'contact.subtitle': "G'oyangiz bormi? Menga yozing — bepul maslahat va narx taklifi olasiz",
     'contact.tg_desc': 'Eng tez aloqa usuli',
-    'contact.bot_desc': 'Avtomatik buyurtma berish',
-    'contact.bot_value': 'Buyurtma boti',
+    'contact.ig_desc': 'Ishlarim va portfolio',
     'contact.tg_action': 'Yozish',
-    'contact.bot_action': 'Boshlash',
+    'contact.ig_action': 'Ochish',
     'contact.copy_tg': 'Telegram username nusxalash',
     'contact.copied': 'Nusxalandi',
     'contact.why_title': 'Nima uchun men?',
@@ -198,10 +197,9 @@ export const strings = {
     'contact.title2': 'проект?',
     'contact.subtitle': 'Есть идея? Напишите мне — получите бесплатную консультацию и предложение цены',
     'contact.tg_desc': 'Самый быстрый способ связи',
-    'contact.bot_desc': 'Автоматический заказ',
-    'contact.bot_value': 'Бот для заказов',
+    'contact.ig_desc': 'Мои работы и портфолио',
     'contact.tg_action': 'Написать',
-    'contact.bot_action': 'Начать',
+    'contact.ig_action': 'Открыть',
     'contact.copy_tg': 'Скопировать username',
     'contact.copied': 'Скопировано',
     'contact.why_title': 'Почему я?',
@@ -299,10 +297,9 @@ export const strings = {
     'contact.title2': 'a Project?',
     'contact.subtitle': 'Have an idea? Write to me — get a free consultation and price quote',
     'contact.tg_desc': 'Fastest way to reach me',
-    'contact.bot_desc': 'Automated ordering',
-    'contact.bot_value': 'Order bot',
+    'contact.ig_desc': 'My work and portfolio',
     'contact.tg_action': 'Message',
-    'contact.bot_action': 'Start',
+    'contact.ig_action': 'Open',
     'contact.copy_tg': 'Copy Telegram username',
     'contact.copied': 'Copied',
     'contact.why_title': 'Why choose me?',
@@ -566,4 +563,6 @@ export const getProjects = (lang) =>
 
 // ─── Shared constants ────────────────────────────────────────────
 export const telegramUsername = 'DevPro_admin';
+export const instagramUsername = 'DevPro_admin';
+export const instagramUrl = `https://instagram.com/${instagramUsername}`;
 export const telegramBotUrl = 'https://t.me/devproo_bot';

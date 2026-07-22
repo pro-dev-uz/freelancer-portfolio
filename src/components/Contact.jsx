@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Send, MessageCircle, Clock, Shield, CheckCircle, Copy } from 'lucide-react';
+import { Send, MessageCircle, Clock, Shield, CheckCircle, Copy, Instagram } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { telegramUsername, telegramBotUrl } from '../data/translations';
+import { telegramUsername, instagramUsername, instagramUrl } from '../data/translations';
 import { RevealLines, Reveal } from './ui/Reveal';
 import Magnetic from './ui/Magnetic';
 import Marquee from './ui/Marquee';
@@ -102,12 +102,12 @@ export default function Contact() {
               label: t('contact.tg_action'),
             },
             {
-              icon: Send,
-              title: 'Telegram Bot',
-              desc: t('contact.bot_desc'),
-              value: t('contact.bot_value'),
-              href: telegramBotUrl,
-              label: t('contact.bot_action'),
+              icon: Instagram,
+              title: 'Instagram',
+              desc: t('contact.ig_desc'),
+              value: `@${instagramUsername}`,
+              href: instagramUrl,
+              label: t('contact.ig_action'),
             },
           ].map((m, i) => (
             <Reveal key={m.title} delay={0.1 + i * 0.1}>
