@@ -1,4 +1,4 @@
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Code2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getNavLinks } from '../data/translations';
 import Magnetic from './ui/Magnetic';
@@ -14,8 +14,13 @@ export default function Footer() {
     <footer className="ink-panel relative overflow-hidden border-t border-invert-line">
       <div className="relative z-10 mx-auto max-w-[1400px] px-5 py-10 sm:px-8 lg:px-12">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <span className="font-display text-base font-bold text-invert-ink">
-            DevPro<span className="text-accent">®</span>
+          <span className="flex items-center gap-2.5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-invert-ink">
+              <Code2 className="h-5 w-5 text-invert-bg" />
+            </span>
+            <span className="font-display text-base font-bold text-invert-ink">
+              DevPro<span className="text-accent">®</span>
+            </span>
           </span>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">

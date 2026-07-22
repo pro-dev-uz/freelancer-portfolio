@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getProjects } from '../data/translations';
 import SectionHead from './ui/SectionHead';
 import { Reveal } from './ui/Reveal';
+import ProjectPreview from './ui/ProjectPreview';
 import { EASE } from '../lib/motion';
 
 // Editorial project index — rows with a floating preview card that
@@ -77,34 +78,21 @@ export default function Projects() {
 
           {/* floating preview card */}
           <AnimatePresence>
-            {hovered !== null && (() => {
-              const HoverIcon = projects[hovered].icon;
-              return (
+            {hovered !== null && (
               <motion.div
                 key={hovered}
-                initial={{ opacity: 0, scale: 0.85, rotate: -3 }}
+                initial={{ opacity: 0, scale: 0.88, rotate: -2 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, scale: 0.85, rotate: 3 }}
+                exit={{ opacity: 0, scale: 0.88, rotate: 2 }}
                 transition={{ duration: 0.35, ease: EASE }}
                 style={{ x: sx, y: sy }}
                 className="pointer-events-none absolute left-0 top-0 z-20 -translate-x-1/2 -translate-y-[110%] w-[340px]"
               >
                 <div className="overflow-hidden rounded-2xl bg-card shadow-2xl shadow-black/20 hairline">
-                  <div className={`h-36 bg-gradient-to-br ${projects[hovered].color} relative`}>
-                    <HoverIcon className="absolute right-4 top-4 h-8 w-8 text-white/80" />
-                    <span className="mono-label absolute bottom-3 left-4 text-white/80">
-                      {projects[hovered].tags[0]}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs leading-relaxed text-muted line-clamp-3">
-                      {projects[hovered].description}
-                    </p>
-                  </div>
+                  <ProjectPreview project={projects[hovered]} />
                 </div>
               </motion.div>
-              );
-            })()}
+            )}
           </AnimatePresence>
         </div>
 
@@ -113,11 +101,8 @@ export default function Projects() {
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={i * 0.06}>
               <div className="overflow-hidden rounded-2xl hairline bg-card">
-                <div className={`relative h-24 bg-gradient-to-br ${project.color}`}>
-                  <project.icon className="absolute right-4 top-4 h-7 w-7 text-white/85" />
-                  <span className="mono-label absolute bottom-3 left-4 text-white/85">0{i + 1}</span>
-                </div>
-                <div className="p-5">
+                <ProjectPreview project={project} />
+                <div className="p-5 hairline-t">
                   <h3 className="font-display text-sm font-bold uppercase tracking-tight text-ink">
                     {project.title}
                   </h3>

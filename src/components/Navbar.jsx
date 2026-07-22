@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Code2 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getNavLinks } from '../data/translations';
@@ -65,13 +65,16 @@ export default function Navbar() {
 
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="flex h-16 items-center justify-between sm:h-20">
-            {/* Wordmark */}
-            <a href="#home" className="group flex items-baseline gap-1" data-cursor>
-              <span className="font-display text-base font-bold tracking-tight sm:text-lg">
-                DevPro
+            {/* Logo */}
+            <a href="#home" className="group flex items-center gap-2.5" data-cursor>
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink transition-colors duration-300 group-hover:bg-accent sm:h-10 sm:w-10">
+                <Code2 className="h-5 w-5 text-bg transition-colors duration-300 group-hover:text-white" />
               </span>
-              <span className="mono-label text-accent transition-transform duration-300 group-hover:rotate-45 inline-block">
-                ®
+              <span className="flex items-baseline gap-1">
+                <span className="font-display text-base font-bold tracking-tight sm:text-lg">
+                  DevPro
+                </span>
+                <span className="mono-label text-accent">®</span>
               </span>
             </a>
 
@@ -159,8 +162,13 @@ export default function Navbar() {
             className="fixed inset-0 z-[70] flex flex-col bg-bg lg:hidden"
           >
             <div className="flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8 hairline-b">
-              <span className="font-display text-base font-bold">
-                DevPro<span className="text-accent">®</span>
+              <span className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink">
+                  <Code2 className="h-5 w-5 text-bg" />
+                </span>
+                <span className="font-display text-base font-bold">
+                  DevPro<span className="text-accent">®</span>
+                </span>
               </span>
               <button
                 onClick={() => setIsOpen(false)}

@@ -23,7 +23,7 @@ export default function Cursor() {
       mx = e.clientX;
       my = e.clientY;
       const t = e.target.closest('a, button, [data-cursor], input, select, textarea, [role="button"]');
-      scale = t ? 2.6 : 1;
+      scale = t ? 1.55 : 1;
       dot.style.opacity = '1';
       ring.style.opacity = '1';
     };
