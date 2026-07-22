@@ -1,99 +1,130 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getServices } from '../data/translations';
+import SectionHead from './ui/SectionHead';
+import { Reveal } from './ui/Reveal';
+import { EASE } from '../lib/motion';
 
+// Editorial accordion index — rows expand on click, first row open.
 export default function Services() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
   const { lang, t } = useLanguage();
   const services = getServices(lang);
+  const [open, setOpen] = useState(0);
 
   return (
-    <section id="services" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden" ref={ref}>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] max-w-[600px] aspect-square bg-primary/3 rounded-full blur-[150px] pointer-events-none" />
+    <section id="services" className="relative py-24 sm:py-28 lg:py-36">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <SectionHead
+          index="02"
+          tag={t('services.tag')}
+          title={t('services.title1')}
+          accent={t('services.title2')}
+          sub={t('services.subtitle')}
+        />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary-light text-sm font-semibold tracking-wider uppercase">
-            {t('services.tag')}
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mt-3 mb-4">
-            {t('services.title1')} <span className="text-gradient">{t('services.title2')}</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            {t('services.subtitle')}
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group glass rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 card-hover cursor-default"
-            >
-              <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${service.bgColor} flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <service.icon className={`w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-r ${service.color} bg-clip-text`} style={{ color: 'inherit' }} />
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-gradient transition-all">
-                {service.title}
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                {service.description}
-              </p>
-
-              <div className="space-y-2.5 mb-6">
-                {service.features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-2.5">
-                    <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color}`} />
-                    <span className="text-slate-300 text-sm">{feature}</span>
+        <div className="hairline-b">
+          {services.map((service, i) => {
+            const isOpen = open === i;
+            return (
+              <Reveal key={service.title} delay={i * 0.05}>
+                <div
+                  className="group cursor-pointer hairline-t"
+                  onClick={() => setOpen(isOpen ? -1 : i)}
+                  data-cursor
+                >
+                  {/* row */}
+                  <div className="flex items-center gap-4 px-2 py-6 sm:gap-8 sm:py-8">
+                    <span
+                      className={`mono-label transition-colors duration-300 ${
+                        isOpen ? 'text-accent' : 'text-muted'
+                      }`}
+                    >
+                      0{i + 1}
+                    </span>
+                    <service.icon
+                      className={`h-5 w-5 shrink-0 transition-all duration-500 sm:h-6 sm:w-6 ${
+                        isOpen ? 'text-accent' : 'text-muted group-hover:text-accent'
+                      }`}
+                    />
+                    <h3 className="flex-1 font-display text-base font-bold uppercase tracking-tight text-ink transition-transform duration-500 group-hover:translate-x-2 sm:text-xl lg:text-2xl">
+                      {service.title}
+                    </h3>
+                    <p className="hidden max-w-xs truncate text-xs text-muted xl:block">
+                      {service.description}
+                    </p>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.4, ease: EASE }}
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 sm:h-10 sm:w-10 ${
+                        isOpen
+                          ? 'border-accent bg-accent text-white'
+                          : 'border-line text-muted group-hover:border-accent group-hover:text-accent'
+                      }`}
+                    >
+                      <Plus className="h-4 w-4" />
+                    </motion.span>
                   </div>
-                ))}
-              </div>
 
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-primary-light text-sm font-medium group/link hover:gap-3 transition-all"
-              >
-                {t('services.detail')}
-                <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-              </a>
-            </motion.div>
-          ))}
+                  {/* expanded panel */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.55, ease: EASE }}
+                        className="overflow-hidden"
+                      >
+                        <div className="grid gap-6 px-2 pb-8 sm:grid-cols-2 sm:gap-10 sm:pl-[4.5rem] lg:pl-24">
+                          <p className="text-sm leading-relaxed text-muted sm:text-base">
+                            {service.description}
+                          </p>
+                          <div>
+                            <div className="flex flex-wrap gap-2">
+                              {service.features.map((f) => (
+                                <span
+                                  key={f}
+                                  className="mono-label hairline rounded-full px-3 py-1.5 text-ink-soft"
+                                >
+                                  {f}
+                                </span>
+                              ))}
+                            </div>
+                            <a
+                              href="#contact"
+                              onClick={(e) => e.stopPropagation()}
+                              className="u-draw mono-label mt-6 inline-flex items-center gap-2 text-accent"
+                            >
+                              {t('services.detail')} →
+                            </a>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 glass rounded-3xl p-6 sm:p-8 text-center"
-        >
-          <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+        {/* extra services CTA */}
+        <Reveal delay={0.2} className="mt-14 text-center">
+          <p className="font-display text-lg font-bold uppercase text-ink sm:text-xl">
             {t('services.extra_title')}
-          </h3>
-          <p className="text-slate-400 text-sm mb-4 max-w-xl mx-auto">
-            {t('services.extra_desc')}
           </p>
-          <motion.a
+          <p className="mx-auto mt-3 max-w-lg text-sm text-muted">{t('services.extra_desc')}</p>
+          <a
             href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-sm font-semibold rounded-xl shadow-lg shadow-primary/20 gradient-keep-white"
+            data-cursor
+            className="group mt-6 inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 transition-transform duration-300 hover:scale-[1.03]"
           >
-            {t('services.extra_cta')}
-            <ArrowRight className="w-4 h-4" />
-          </motion.a>
-        </motion.div>
+            <span className="mono-label text-white">{t('services.extra_cta')}</span>
+            <span className="text-white transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );

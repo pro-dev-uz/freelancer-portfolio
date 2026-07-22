@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2, Sun, Moon } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getNavLinks } from '../data/translations';
+import { EASE } from '../lib/motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,223 +12,216 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const { theme, toggleTheme } = useTheme();
   const { lang, changeLang, t, LANGS, LANG_LABELS } = useLanguage();
-  const [langOpen, setLangOpen] = useState(false);
 
   const navLinks = getNavLinks(lang);
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 26, mass: 0.3 });
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
       const sections = navLinks.map((l) => l.href.slice(1));
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= 120) {
+        if (el && el.getBoundingClientRect().top <= 140) {
           setActiveSection(id);
           break;
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
 
-  // Close lang dropdown on outside click
+  // Lock body scroll while overlay menu is open
   useEffect(() => {
-    if (!langOpen) return;
-    const close = () => setLangOpen(false);
-    window.addEventListener('click', close);
-    return () => window.removeEventListener('click', close);
-  }, [langOpen]);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  const cycleLang = () => {
+    const next = LANGS[(LANGS.indexOf(lang) + 1) % LANGS.length];
+    changeLang(next);
+  };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass shadow-lg shadow-black/20' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <motion.a
-            href="#home"
-            className="flex items-center gap-2 group"
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-white gradient-keep-white" />
+    <>
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
+        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
+          scrolled ? 'bg-bg/85 backdrop-blur-xl hairline-b' : 'bg-transparent'
+        }`}
+      >
+        {/* scroll progress hairline */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-accent"
+          style={{ scaleX: progress }}
+        />
+
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+          <div className="flex h-16 items-center justify-between sm:h-20">
+            {/* Wordmark */}
+            <a href="#home" className="group flex items-baseline gap-1" data-cursor>
+              <span className="font-display text-base font-bold tracking-tight sm:text-lg">
+                DevPro
+              </span>
+              <span className="mono-label text-accent transition-transform duration-300 group-hover:rotate-45 inline-block">
+                ®
+              </span>
+            </a>
+
+            {/* Desktop nav */}
+            <div className="hidden items-center gap-8 lg:flex">
+              {navLinks.map((link, i) => {
+                const active = activeSection === link.href.slice(1);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`u-draw mono-label transition-colors duration-300 ${
+                      active ? 'text-accent' : 'text-muted hover:text-ink'
+                    }`}
+                  >
+                    <span className="mr-1.5 text-accent/60">0{i + 1}</span>
+                    {link.label}
+                  </a>
+                );
+              })}
             </div>
-            <span className="text-lg sm:text-xl font-bold text-gradient">DevPro</span>
-          </motion.a>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  activeSection === link.href.slice(1)
-                    ? 'text-white'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                {activeSection === link.href.slice(1) && (
-                  <motion.div
-                    layoutId="navbar-active"
-                    className="absolute inset-0 bg-primary/15 border border-primary/20 rounded-lg"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{link.label}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* Right controls */}
-          <div className="flex items-center gap-2">
-            {/* Language Switcher */}
-            <div className="relative">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLangOpen(!langOpen);
-                }}
-                className="px-2.5 py-1.5 text-xs sm:text-sm font-bold rounded-lg bg-primary/10 border border-primary/20 text-primary-light hover:bg-primary/20 transition-colors uppercase"
+            {/* Controls */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <button
+                onClick={cycleLang}
+                className="mono-label hairline rounded-full px-3 py-2 text-ink transition-colors duration-300 hover:border-accent hover:text-accent"
+                aria-label="Change language"
               >
                 {LANG_LABELS[lang]}
-              </motion.button>
+              </button>
 
-              <AnimatePresence>
-                {langOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute right-0 top-full mt-2 glass rounded-xl overflow-hidden min-w-[90px] shadow-xl z-50"
-                  >
-                    {LANGS.map((l) => (
-                      <button
-                        key={l}
-                        onClick={() => {
-                          changeLang(l);
-                          setLangOpen(false);
-                        }}
-                        className={`block w-full text-left px-4 py-2.5 text-sm font-medium transition-colors ${
-                          lang === l
-                            ? 'bg-primary/20 text-primary-light'
-                            : 'text-slate-400 hover:text-white hover:bg-white/5'
-                        }`}
-                      >
-                        {LANG_LABELS[l]}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Theme Toggle */}
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary-light hover:bg-primary/20 transition-colors"
-              aria-label="Toggle theme"
-            >
-              <AnimatePresence mode="wait">
-                {theme === 'dark' ? (
-                  <motion.div
-                    key="sun"
+              <button
+                onClick={toggleTheme}
+                className="hairline flex h-8 w-8 items-center justify-center rounded-full text-ink transition-colors duration-300 hover:border-accent hover:text-accent sm:h-9 sm:w-9"
+                aria-label="Toggle theme"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={theme}
                     initial={{ rotate: -90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex"
                   >
-                    <Sun className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+                    {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                  </motion.span>
+                </AnimatePresence>
+              </button>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
-              <motion.a
+              <a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-5 py-2.5 bg-gradient-to-r from-primary to-accent text-sm font-semibold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow gradient-keep-white"
+                className="group hidden items-center gap-2 overflow-hidden rounded-full bg-ink px-5 py-2.5 lg:inline-flex"
+                data-cursor
               >
-                {t('nav.cta')}
-              </motion.a>
-            </div>
+                <span className="mono-label text-bg transition-colors duration-300 group-hover:text-white">
+                  {t('nav.cta')}
+                </span>
+                <span className="h-1.5 w-1.5 rounded-full bg-accent transition-transform duration-500 group-hover:scale-[14]" />
+                <span className="mono-label absolute opacity-0">{t('nav.cta')}</span>
+              </a>
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setIsOpen(true)}
+                className="flex h-8 w-8 items-center justify-center text-ink lg:hidden"
+                aria-label="Open menu"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile menu */}
+      {/* Full-screen mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass border-t border-white/5 overflow-hidden"
+            initial={{ clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="fixed inset-0 z-[70] flex flex-col bg-bg lg:hidden"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8 hairline-b">
+              <span className="font-display text-base font-bold">
+                DevPro<span className="text-accent">®</span>
+              </span>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="flex h-8 w-8 items-center justify-center text-ink"
+                aria-label="Close menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="flex flex-1 flex-col justify-center px-6">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                    activeSection === link.href.slice(1)
-                      ? 'bg-primary/15 text-white'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
-                  }`}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: EASE, delay: 0.15 + i * 0.07 }}
+                  className="hairline-b group flex items-center justify-between py-5"
                 >
-                  {link.label}
+                  <span className="flex items-baseline gap-4">
+                    <span className="mono-label text-accent">0{i + 1}</span>
+                    <span className="font-display text-2xl font-bold uppercase tracking-tight text-ink">
+                      {link.label}
+                    </span>
+                  </span>
+                  <span className="text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </motion.a>
               ))}
+
               <motion.a
                 href="#contact"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
                 onClick={() => setIsOpen(false)}
-                className="block mt-2 px-4 py-3 bg-gradient-to-r from-primary to-accent text-sm font-semibold rounded-xl text-center gradient-keep-white"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: EASE, delay: 0.15 + navLinks.length * 0.07 }}
+                className="mt-8 flex items-center justify-center gap-3 rounded-full bg-accent py-4"
               >
-                {t('nav.cta')}
+                <span className="mono-label text-white">{t('nav.cta')}</span>
+                <span className="text-white">↗</span>
               </motion.a>
+            </div>
+
+            <div className="flex items-center justify-between px-6 py-6 hairline-t">
+              <div className="flex gap-4">
+                {LANGS.map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => changeLang(l)}
+                    className={`mono-label ${lang === l ? 'text-accent' : 'text-muted'}`}
+                  >
+                    {LANG_LABELS[l]}
+                  </button>
+                ))}
+              </div>
+              <span className="mono-label text-muted">41.31°N 69.24°E</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

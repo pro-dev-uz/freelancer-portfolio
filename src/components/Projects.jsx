@@ -1,107 +1,159 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getProjects } from '../data/translations';
+import SectionHead from './ui/SectionHead';
+import { Reveal } from './ui/Reveal';
+import { EASE } from '../lib/motion';
 
+// Editorial project index — rows with a floating preview card that
+// follows the cursor on desktop; self-contained cards on mobile.
 export default function Projects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
   const { lang, t } = useLanguage();
   const projects = getProjects(lang);
+  const [hovered, setHovered] = useState(null);
+  const containerRef = useRef(null);
+
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const sx = useSpring(px, { stiffness: 160, damping: 22, mass: 0.5 });
+  const sy = useSpring(py, { stiffness: 160, damping: 22, mass: 0.5 });
+
+  const onMove = (e) => {
+    const r = containerRef.current?.getBoundingClientRect();
+    if (!r) return;
+    px.set(e.clientX - r.left);
+    py.set(e.clientY - r.top);
+  };
 
   return (
-    <section id="projects" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[60vw] max-w-[500px] aspect-square bg-accent/3 rounded-full blur-[150px] pointer-events-none" />
+    <section id="projects" className="relative py-24 sm:py-28 lg:py-36">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <SectionHead
+          index="04"
+          tag={t('projects.tag')}
+          title={t('projects.title1')}
+          accent={t('projects.title2')}
+          sub={t('projects.subtitle')}
+        />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+        {/* ── Desktop: index rows + floating preview ── */}
+        <div
+          ref={containerRef}
+          onMouseMove={onMove}
+          onMouseLeave={() => setHovered(null)}
+          className="relative hidden lg:block hairline-b"
         >
-          <span className="text-primary-light text-sm font-semibold tracking-wider uppercase">
-            {t('projects.tag')}
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mt-3 mb-4">
-            {t('projects.title1')} <span className="text-gradient">{t('projects.title2')}</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            {t('projects.subtitle')}
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-6">
-          {projects.map((project, i) => {
-            const total = projects.length;
-            const lastRowCount = total % 3;
-            const isLastRow = i >= total - lastRowCount && lastRowCount !== 0;
-            const isFirstOfLastRow = i === total - lastRowCount;
-            let colClass = 'lg:col-span-2';
-            if (isLastRow) {
-              if (lastRowCount === 1) colClass = 'lg:col-span-2 lg:col-start-3';
-              else if (lastRowCount === 2 && isFirstOfLastRow) colClass = 'lg:col-span-2 lg:col-start-2';
-              else colClass = 'lg:col-span-2';
-            }
-            return (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group glass rounded-2xl sm:rounded-3xl overflow-hidden card-hover ${colClass}`}
-            >
-              <div className={`h-32 sm:h-40 bg-gradient-to-br ${project.color} p-4 sm:p-6 flex items-end relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="absolute top-4 right-4 w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-500">
-                  <project.icon className="w-10 h-10 text-white gradient-keep-white" />
-                </div>
-                <h3 className="relative text-lg font-bold text-white z-10 gradient-keep-white">{project.title}</h3>
-              </div>
-
-              <div className="p-4 sm:p-6">
-                <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
+          {projects.map((project, i) => (
+            <Reveal key={project.title} delay={i * 0.04}>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onMouseEnter={() => setHovered(i)}
+                className="group relative flex items-center gap-8 px-2 py-7 hairline-t"
+                data-cursor
+              >
+                <span className="mono-label w-8 text-muted transition-colors duration-300 group-hover:text-accent">
+                  0{i + 1}
+                </span>
+                <h3 className="flex-1 font-display text-xl font-bold uppercase tracking-tight text-ink transition-transform duration-500 group-hover:translate-x-3 xl:text-2xl">
+                  {project.title}
+                </h3>
+                <div className="flex gap-2">
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary-light rounded-lg border border-primary/10"
-                    >
+                    <span key={tag} className="mono-label hairline rounded-full px-3 py-1 text-muted">
                       {tag}
                     </span>
                   ))}
                 </div>
+                <span className="text-muted transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent">
+                  ↗
+                </span>
+              </a>
+            </Reveal>
+          ))}
 
-                <div className="flex items-center justify-between">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 text-primary-light text-sm font-medium hover:gap-3 transition-all"
-                  >
-                    {t('projects.order_similar')}
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                  {project.link && (
+          {/* floating preview card */}
+          <AnimatePresence>
+            {hovered !== null && (() => {
+              const HoverIcon = projects[hovered].icon;
+              return (
+              <motion.div
+                key={hovered}
+                initial={{ opacity: 0, scale: 0.85, rotate: -3 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.85, rotate: 3 }}
+                transition={{ duration: 0.35, ease: EASE }}
+                style={{ x: sx, y: sy }}
+                className="pointer-events-none absolute left-0 top-0 z-20 -translate-x-1/2 -translate-y-[110%] w-[340px]"
+              >
+                <div className="overflow-hidden rounded-2xl bg-card shadow-2xl shadow-black/20 hairline">
+                  <div className={`h-36 bg-gradient-to-br ${projects[hovered].color} relative`}>
+                    <HoverIcon className="absolute right-4 top-4 h-8 w-8 text-white/80" />
+                    <span className="mono-label absolute bottom-3 left-4 text-white/80">
+                      {projects[hovered].tags[0]}
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-xs leading-relaxed text-muted line-clamp-3">
+                      {projects[hovered].description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+              );
+            })()}
+          </AnimatePresence>
+        </div>
+
+        {/* ── Mobile: minimal cards ── */}
+        <div className="space-y-5 lg:hidden">
+          {projects.map((project, i) => (
+            <Reveal key={project.title} delay={i * 0.06}>
+              <div className="overflow-hidden rounded-2xl hairline bg-card">
+                <div className={`relative h-24 bg-gradient-to-br ${project.color}`}>
+                  <project.icon className="absolute right-4 top-4 h-7 w-7 text-white/85" />
+                  <span className="mono-label absolute bottom-3 left-4 text-white/85">0{i + 1}</span>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display text-sm font-bold uppercase tracking-tight text-ink">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">{project.description}</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="mono-label hairline rounded-full px-2.5 py-1 text-muted">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center justify-between hairline-t pt-4">
+                    <a href="#contact" className="mono-label text-accent">
+                      {t('projects.order_similar')} →
+                    </a>
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-xs font-medium transition-colors border border-white/10 hover:border-white/30 rounded-lg px-3 py-1.5"
+                      className="mono-label inline-flex items-center gap-1.5 text-ink"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      {t('projects.view')}
+                      {t('projects.view')} <ExternalLink className="h-3 w-3" />
                     </a>
-                  )}
+                  </div>
                 </div>
               </div>
-            </motion.div>
-            );
-          })}
+            </Reveal>
+          ))}
         </div>
+
+        {/* desktop: order-similar hint */}
+        <Reveal delay={0.2} className="mt-10 hidden text-center lg:block">
+          <a href="#contact" className="u-draw mono-label inline-flex items-center gap-2 text-muted hover:text-accent">
+            {t('projects.order_similar')} →
+          </a>
+        </Reveal>
       </div>
     </section>
   );

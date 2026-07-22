@@ -1,54 +1,62 @@
-import { Code2, ArrowUp } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { getNavLinks } from '../data/translations';
+import Magnetic from './ui/Magnetic';
 
+// Footer continues the ink panel — giant cropped ghost wordmark below.
 export default function Footer() {
   const { lang, t } = useLanguage();
   const navLinks = getNavLinks(lang);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="relative border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-white gradient-keep-white" />
-            </div>
-            <span className="text-lg font-bold text-gradient">DevPro</span>
-          </div>
+    <footer className="ink-panel relative overflow-hidden border-t border-invert-line">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-5 py-10 sm:px-8 lg:px-12">
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <span className="font-display text-base font-bold text-invert-ink">
+            DevPro<span className="text-accent">®</span>
+          </span>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-slate-400 text-sm hover:text-white transition-colors"
+                className="u-draw mono-label text-invert-muted hover:text-invert-ink"
               >
                 {link.label}
               </a>
             ))}
-          </div>
+          </nav>
 
-          <motion.button
-            onClick={scrollToTop}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary-light hover:bg-primary/20 transition-colors"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </motion.button>
+          <Magnetic>
+            <button
+              onClick={scrollToTop}
+              data-cursor
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-invert-line text-invert-muted transition-colors duration-300 hover:border-accent hover:text-accent"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="h-4 w-4" />
+            </button>
+          </Magnetic>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5 text-center">
-          <p className="text-slate-500 text-sm flex items-center justify-center gap-1">
-            &copy; {new Date().getFullYear()} DevPro. {t('footer.rights')}
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-invert-line pt-6 sm:flex-row">
+          <p className="mono-label text-invert-muted">
+            © {new Date().getFullYear()} DEVPRO — {t('footer.rights')}
           </p>
+          <p className="mono-label text-invert-muted">41.31°N 69.24°E / UZ</p>
         </div>
+      </div>
+
+      {/* ghost wordmark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none text-center font-display font-bold uppercase leading-[0.72] tracking-tight text-outline-invert opacity-[0.14]"
+        style={{ fontSize: 'clamp(4rem, 17vw, 15rem)', marginBottom: '-0.18em' }}
+      >
+        DevPro
       </div>
     </footer>
   );

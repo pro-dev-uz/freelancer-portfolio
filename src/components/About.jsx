@@ -1,12 +1,12 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { CheckCircle2, Award, Coffee, Rocket } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { skills } from '../data/translations';
+import SectionHead from './ui/SectionHead';
+import { Reveal } from './ui/Reveal';
+import { EASE, VIEWPORT } from '../lib/motion';
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { t } = useLanguage();
 
   const features = [
@@ -16,107 +16,122 @@ export default function About() {
     { icon: CheckCircle2, title: t('about.feat4_title'), desc: t('about.feat4_desc') },
   ];
 
+  const specs = [
+    ['LOCATION', 'UZBEKISTAN'],
+    ['EXPERIENCE', '3+ YRS'],
+    ['FOCUS', 'BOT / WEB / ANDROID'],
+    ['RESPONSE', '< 1 HOUR'],
+  ];
+
   return (
-    <section id="about" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" />
+    <section id="about" className="relative py-24 sm:py-28 lg:py-36">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left — sticky heading + spec sheet */}
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-32">
+              <SectionHead
+                index="01"
+                tag={t('about.tag')}
+                title={t('about.title1')}
+                accent={t('about.title2')}
+              />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-16"
-        >
-          <span className="text-primary-light text-xs sm:text-sm font-semibold tracking-wider uppercase">
-            {t('about.tag')}
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mt-2 sm:mt-3 mb-3 sm:mb-4">
-            {t('about.title1')} <span className="text-gradient">{t('about.title2')}</span>
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-            {t('about.subtitle')}
-          </p>
-        </motion.div>
+              {/* datasheet */}
+              <Reveal delay={0.2} className="hairline rounded-2xl">
+                <div className="p-6">
+                  <p className="mono-label mb-4 text-accent">DEVPRO — SPEC SHEET</p>
+                  {specs.map(([k, v], i) => (
+                    <div
+                      key={k}
+                      className={`flex items-center justify-between py-3 ${
+                        i > 0 ? 'hairline-t' : ''
+                      }`}
+                    >
+                      <span className="mono-label text-muted">{k}</span>
+                      <span className="mono-label text-ink">{v}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <div className="glass rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 mb-6 sm:mb-8">
-              <p className="text-slate-300 leading-relaxed text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
+          {/* Right — narrative, features, skills */}
+          <div className="lg:col-span-7">
+            <Reveal>
+              <p className="text-lg leading-relaxed text-ink-soft sm:text-xl lg:text-2xl">
                 {t('about.p1')}{' '}
-                <span className="text-primary-light font-semibold">{t('about.p1_tg')}</span>,{' '}
-                <span className="text-primary-light font-semibold">{t('about.p1_web')}</span>{' '}
+                <span className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
+                  {t('about.p1_tg')}
+                </span>
+                ,{' '}
+                <span className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
+                  {t('about.p1_web')}
+                </span>{' '}
                 {t('about.p1_end').startsWith('.') ? '' : 'va '}
-                <span className="text-primary-light font-semibold">{t('about.p1_and')}</span>
-                {' '}{t('about.p1_end')}
+                <span className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">
+                  {t('about.p1_and')}
+                </span>{' '}
+                {t('about.p1_end')}
               </p>
-              <p className="text-slate-300 leading-relaxed text-sm sm:text-base lg:text-lg">
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
                 {t('about.p2')}
               </p>
-            </div>
+            </Reveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {/* features — hairline grid, no cards */}
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2">
               {features.map((item, i) => (
-                <motion.div
+                <Reveal
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4 + i * 0.1 }}
-                  className="flex items-start gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-dark-light/50 border border-white/5 hover:border-primary/20 transition-colors"
+                  delay={0.1 + i * 0.08}
+                  className={`group flex items-start gap-4 p-6 hairline-t ${
+                    i % 2 === 1 ? 'sm:border-l sm:border-line' : ''
+                  }`}
                 >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-light" />
+                  <item.icon className="mt-0.5 h-5 w-5 shrink-0 text-muted transition-colors duration-300 group-hover:text-accent" />
+                  <div>
+                    <h4 className="text-sm font-bold text-ink">{item.title}</h4>
+                    <p className="mt-1 text-xs leading-relaxed text-muted sm:text-sm">{item.desc}</p>
                   </div>
-                  <div className="min-w-0">
-                    <h4 className="text-white font-semibold text-xs sm:text-sm">{item.title}</h4>
-                    <p className="text-slate-400 text-[11px] sm:text-xs mt-0.5">{item.desc}</p>
-                  </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <div className="glass rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-6 sm:mb-8 flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center">
-                  <Award className="w-4 h-4 text-primary-light" />
-                </div>
-                {t('about.skills_title')}
-              </h3>
+            {/* skills — mono list with drawing lines */}
+            <div className="mt-14">
+              <Reveal className="mb-6 flex items-center gap-3">
+                <span className="mono-label text-accent">{'>'}</span>
+                <span className="mono-label text-ink">{t('about.skills_title')}</span>
+              </Reveal>
 
-              <div className="space-y-4 sm:space-y-5">
+              <div className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
                 {skills.map((skill, i) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.5 + i * 0.08 }}
-                  >
-                    <div className="flex justify-between items-center mb-1.5 sm:mb-2">
-                      <span className="text-xs sm:text-sm font-medium text-slate-300">{skill.name}</span>
-                      <span className="text-[10px] sm:text-xs font-semibold text-primary-light">{skill.level}%</span>
+                  <div key={skill.name}>
+                    <div className="mb-2 flex items-baseline justify-between">
+                      <span className="font-mono text-xs font-medium text-ink-soft sm:text-sm">
+                        {skill.name}
+                      </span>
+                      <span className="mono-label text-muted">{skill.level}%</span>
                     </div>
-                    <div className="h-1.5 sm:h-2 bg-dark-lighter/50 rounded-full overflow-hidden">
+                    <div className="h-px w-full bg-line">
                       <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : {}}
-                        transition={{ duration: 1, delay: 0.6 + i * 0.08, ease: 'easeOut' }}
-                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                        className="h-px origin-left bg-accent"
+                        style={{ width: `${skill.level}%` }}
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={VIEWPORT}
+                        transition={{ duration: 1.1, ease: EASE, delay: 0.15 + i * 0.06 }}
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

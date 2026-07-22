@@ -1,66 +1,65 @@
-import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { MessageCircle, Search, Rocket, CheckCircle2 } from 'lucide-react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { getProcessSteps } from '../data/translations';
+import SectionHead from './ui/SectionHead';
+import { Reveal } from './ui/Reveal';
 
-const stepIcons = [MessageCircle, Search, Rocket, CheckCircle2];
-
+// 4 steps joined by a scroll-scrubbed progress line.
 export default function Process() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
   const { lang, t } = useLanguage();
-  const processSteps = getProcessSteps(lang);
+  const steps = getProcessSteps(lang);
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 0.75', 'end 0.6'],
+  });
+  const line = useSpring(scrollYProgress, { stiffness: 90, damping: 24 });
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+    <section id="process" className="relative py-24 sm:py-28 lg:py-36 bg-bg-soft">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <SectionHead
+          index="03"
+          tag={t('process.tag')}
+          title={t('process.title1')}
+          accent={t('process.title2')}
+          sub={t('process.subtitle')}
+        />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-16"
-        >
-          <span className="text-primary-light text-xs sm:text-sm font-semibold tracking-wider uppercase">{t('process.tag')}</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mt-2 sm:mt-3 mb-3 sm:mb-4">
-            {t('process.title1')} <span className="text-gradient">{t('process.title2')}</span>
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-            {t('process.subtitle')}
-          </p>
-        </motion.div>
+        <div ref={ref} className="relative">
+          {/* desktop connector track */}
+          <div className="absolute left-0 right-0 top-[26px] hidden h-px bg-line lg:block">
+            <motion.div className="h-px origin-left bg-accent" style={{ scaleX: line }} />
+          </div>
+          {/* mobile connector track */}
+          <div className="absolute bottom-4 left-[13px] top-2 w-px bg-line lg:hidden">
+            <motion.div className="w-px origin-top bg-accent h-full" style={{ scaleY: line }} />
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {processSteps.map((step, i) => {
-            const Icon = stepIcons[i];
-            return (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative glass rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-center card-hover"
-              >
-                {i < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-primary/40 to-transparent" />
-                )}
-
-                <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary/10 border border-primary/20 mb-4">
-                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary-light" />
+          <div className="grid gap-10 lg:grid-cols-4 lg:gap-8">
+            {steps.map((step, i) => (
+              <Reveal key={step.step} delay={i * 0.1} className="relative pl-12 lg:pl-0">
+                {/* node */}
+                <div className="absolute left-0 top-1 flex h-7 w-7 items-center justify-center rounded-full border border-accent bg-bg lg:relative lg:left-auto lg:top-auto lg:mb-8 lg:h-[52px] lg:w-[52px]">
+                  <span className="mono-label text-accent">{step.step}</span>
                 </div>
 
-                <div className="text-xs font-bold text-primary-light mb-2 tracking-wider">{step.step} {t('process.step_suffix')}</div>
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-3">{step.description}</p>
+                <span className="font-display pointer-events-none absolute -top-4 right-0 hidden text-[5rem] font-bold leading-none text-outline-faint lg:block">
+                  {step.step}
+                </span>
 
-                <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent-light text-xs font-medium">
+                <h3 className="font-display text-base font-bold uppercase tracking-tight text-ink sm:text-lg">
+                  {step.title}
+                </h3>
+                <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">{step.description}</p>
+                <span className="mono-label mt-4 inline-block rounded-full bg-accent-soft px-3 py-1.5 text-accent">
                   {step.duration}
-                </div>
-              </motion.div>
-            );
-          })}
+                </span>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
