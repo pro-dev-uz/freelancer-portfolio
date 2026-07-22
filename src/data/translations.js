@@ -17,10 +17,10 @@ export const strings = {
 
     // Hero
     'hero.badge': 'Freelance Developer',
-    'hero.title1': "G'oyangizni",
-    'hero.title2': 'Haqiqatga',
-    'hero.title3': 'Aylantiraman',
-    'hero.subtitle': 'Sizning biznesingizni keyingi bosqichga olib chiqaman — tez, sifatli va professional',
+    'hero.title1': 'Biznesingizni',
+    'hero.title2': 'Keyingi Bosqichga',
+    'hero.title3': 'Olib Chiqing',
+    'hero.subtitle': "G'oyangizni haqiqatga aylantiraman — tez, sifatli va professional",
     'hero.cta1': 'Loyiha Buyurtma Qilish',
     'hero.cta2': 'Xizmatlarimiz',
 
@@ -126,10 +126,10 @@ export const strings = {
     'nav.cta': 'Связаться',
 
     'hero.badge': 'Freelance Developer',
-    'hero.title1': 'Вашу идею',
-    'hero.title2': 'воплощу в',
-    'hero.title3': 'реальность',
-    'hero.subtitle': 'Выведу ваш бизнес на новый уровень — быстро, качественно и профессионально',
+    'hero.title1': 'Выведите Бизнес',
+    'hero.title2': 'На Новый',
+    'hero.title3': 'Уровень',
+    'hero.subtitle': 'Воплощу вашу идею в реальность — быстро, качественно и профессионально',
     'hero.cta1': 'Заказать проект',
     'hero.cta2': 'Наши услуги',
 
@@ -226,10 +226,10 @@ export const strings = {
     'nav.cta': 'Get in Touch',
 
     'hero.badge': 'Freelance Developer',
-    'hero.title1': 'Turning Your',
-    'hero.title2': 'Ideas Into',
-    'hero.title3': 'Reality',
-    'hero.subtitle': "I'll take your business to the next level — fast, professional and reliable",
+    'hero.title1': 'Take Your Business',
+    'hero.title2': 'To The Next',
+    'hero.title3': 'Level',
+    'hero.subtitle': "I turn your ideas into reality — fast, professional and reliable",
     'hero.cta1': 'Order a Project',
     'hero.cta2': 'Our Services',
 
