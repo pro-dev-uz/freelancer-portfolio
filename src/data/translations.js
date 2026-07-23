@@ -336,20 +336,20 @@ export const getHeroTypingWords = (lang) => ({
 // ─── Stats ───────────────────────────────────────────────────────
 export const getStats = (lang) => ({
   uz: [
-    { value: '50+', label: 'Tugallangan loyihalar' },
-    { value: '30+', label: 'Mamnun mijozlar' },
+    { value: '40+', label: 'Tugallangan loyihalar' },
+    { value: '25+', label: 'Mamnun mijozlar' },
     { value: '3+', label: 'Yillik tajriba' },
     { value: '24/7', label: "Qo'llab-quvvatlash" },
   ],
   ru: [
-    { value: '50+', label: 'Завершённых проектов' },
-    { value: '30+', label: 'Довольных клиентов' },
+    { value: '40+', label: 'Завершённых проектов' },
+    { value: '25+', label: 'Довольных клиентов' },
     { value: '3+', label: 'Года опыта' },
     { value: '24/7', label: 'Поддержка' },
   ],
   en: [
-    { value: '50+', label: 'Completed projects' },
-    { value: '30+', label: 'Happy clients' },
+    { value: '40+', label: 'Completed projects' },
+    { value: '25+', label: 'Happy clients' },
     { value: '3+', label: 'Years experience' },
     { value: '24/7', label: 'Support' },
   ],
