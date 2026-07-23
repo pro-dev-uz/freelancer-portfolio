@@ -4,17 +4,17 @@ import { useLanguage } from '../context/LanguageContext';
 const SEO_DATA = {
   uz: {
     title: "DevPro — Telegram Bot, Web Sayt, Android Ilova Yaratish | Toshkent",
-    description: "Professional freelancer dasturchi — Telegram botlar, web saytlar, Android ilovalar yaratish. Toshkent, O'zbekiston. Tez, sifatli va kafolatli. Bepul maslahat!",
+    description: "Professional dasturlash jamoasi — Telegram botlar, web saytlar, Android ilovalar yaratamiz. Toshkent, O'zbekiston. Tez, sifatli va kafolatli. Bepul maslahat!",
     lang: 'uz',
   },
   ru: {
     title: "DevPro — Разработка Telegram Бота, Сайта, Android Приложения | Ташкент",
-    description: "Профессиональный фрилансер-программист — создание Telegram ботов, сайтов, Android приложений. Ташкент, Узбекистан. Быстро, качественно, с гарантией.",
+    description: "Профессиональная команда разработчиков — создание Telegram ботов, сайтов, Android приложений. Ташкент, Узбекистан. Быстро, качественно, с гарантией.",
     lang: 'ru',
   },
   en: {
     title: "DevPro — Telegram Bot, Website, Android App Development | Tashkent",
-    description: "Professional freelance developer — Telegram bots, websites, Android apps. Tashkent, Uzbekistan. Fast, quality, guaranteed. Free consultation!",
+    description: "Professional development team — Telegram bots, websites, Android apps. Tashkent, Uzbekistan. Fast, quality, guaranteed. Free consultation!",
     lang: 'en',
   },
 };
