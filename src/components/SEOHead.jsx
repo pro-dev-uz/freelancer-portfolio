@@ -30,6 +30,24 @@ export default function SEOHead() {
     // html lang attribute
     document.documentElement.lang = seo.lang;
 
+    // Canonical follows the language URL (uz = base, ru/en = ?lang=)
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute(
+        'href',
+        seo.lang === 'uz' ? 'https://pro-dev.uz/' : `https://pro-dev.uz/?lang=${seo.lang}`
+      );
+    }
+
+    // og:locale per language
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) {
+      ogLocale.setAttribute(
+        'content',
+        { uz: 'uz_UZ', ru: 'ru_RU', en: 'en_US' }[seo.lang] || 'uz_UZ'
+      );
+    }
+
     // Meta description
     let desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute('content', seo.description);
