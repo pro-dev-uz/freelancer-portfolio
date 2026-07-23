@@ -328,9 +328,9 @@ export const getNavLinks = (lang) => [
 
 // ─── Hero typing words ──────────────────────────────────────────
 export const getHeroTypingWords = (lang) => ({
-  uz: ['Telegram Botlar', 'Web Saytlar', 'Android Ilovalar', 'E-Commerce Tizimlar'],
-  ru: ['Telegram Боты', 'Веб-Сайты', 'Android Приложения', 'E-Commerce Системы'],
-  en: ['Telegram Bots', 'Websites', 'Android Apps', 'E-Commerce Systems'],
+  uz: ['Telegram Botlar', 'Web Saytlar', 'Android Ilovalar', 'Video Syomka & Montaj', 'E-Commerce Tizimlar'],
+  ru: ['Telegram Боты', 'Веб-Сайты', 'Android Приложения', 'Видеосъёмка и Монтаж', 'E-Commerce Системы'],
+  en: ['Telegram Bots', 'Websites', 'Android Apps', 'Video Production', 'E-Commerce Systems'],
 })[lang];
 
 // ─── Stats ───────────────────────────────────────────────────────
@@ -384,7 +384,7 @@ const servicesText = {
     { title: 'Android Ilovalar', description: "Android uchun native va cross-platform mobil ilovalar — xabarlar, do'konlar, xizmatlar", features: ['React Native', 'Push bildirishnomalar', 'Offline rejim', 'Play Store nashr'] },
     { title: 'Telegram Stars & Premium', description: "Telegram Stars integratsiyasi va Premium xizmatlar — kontentni monetizatsiya, to'lov tizimi va maxsus imkoniyatlar", features: ["Stars to'lov tizimi", 'Premium hadya & kontent', 'Obuna tizimi', 'Premium bot'] },
     { title: 'E-Commerce', description: "Telegram va Web uchun onlayn do'kon tizimlari — to'liq avtomatlashtirilgan", features: ['Mahsulot katalog', "To'lov gateway", 'Buyurtma tracking', 'Analitika'] },
-    { title: 'Video Ishlab Chiqarish', description: "5+ yillik tajriba bilan professional video suratga olish va montaj — har qanday darajadagi video kontent yaratish", features: ['Professional suratga olish', 'Kino darajali montaj', 'Motion graphics', 'Rangli korreksiya'] },
+    { title: 'Video Studio — Syomka & Montaj', description: "O'z video studiyamiz bor! Kompaniyangiz videolarini syomkadan montajgacha, tayyor natijagacha to'liq biz bilan qiling — reklama roliklari, mahsulot videolari, korporativ kontent. 5+ yillik tajriba", features: ["O'z studiyamiz", 'Professional video olish', 'Kino darajali montaj', 'Motion graphics', 'Rangli korreksiya'] },
   ],
   ru: [
     { title: 'Telegram Бот', description: 'Создание Telegram ботов любой сложности — автоматизация, CRM, платёжные системы, inline боты', features: ['Inline боты', 'Интеграция оплаты', 'Админ панель', 'Авто-ответы'] },
@@ -392,7 +392,7 @@ const servicesText = {
     { title: 'Android Приложения', description: 'Native и кроссплатформенные мобильные приложения для Android', features: ['React Native', 'Push уведомления', 'Офлайн режим', 'Публикация в Play Store'] },
     { title: 'Telegram Stars & Premium', description: 'Интеграция Telegram Stars и Premium услуги — монетизация контента, платёжная система и особые возможности', features: ['Система оплаты Stars', 'Премиум подарки & контент', 'Система подписки', 'Премиум бот'] },
     { title: 'E-Commerce', description: 'Интернет-магазины для Telegram и Web — полностью автоматизированные', features: ['Каталог товаров', 'Платёжный шлюз', 'Отслеживание заказов', 'Аналитика'] },
-    { title: 'Видео Продакшн', description: 'Профессиональная видеосъёмка и монтаж с опытом 5+ лет — создание видеоконтента любого уровня сложности', features: ['Профессиональная съёмка', 'Монтаж кино-уровня', 'Motion graphics', 'Цветокоррекция'] },
+    { title: 'Видео Студия — Съёмка и Монтаж', description: 'У нас собственная видеостудия! Видео вашей компании — от съёмки до монтажа и готового результата, всё у нас: рекламные ролики, продуктовые видео, корпоративный контент. Опыт 5+ лет', features: ['Собственная студия', 'Профессиональная съёмка', 'Монтаж кино-уровня', 'Motion graphics', 'Цветокоррекция'] },
   ],
   en: [
     { title: 'Telegram Bot', description: 'Creating Telegram bots of any complexity — automation, CRM, payment systems, inline bots', features: ['Inline bots', 'Payment integration', 'Admin panel', 'Auto-reply system'] },
@@ -400,7 +400,7 @@ const servicesText = {
     { title: 'Android Apps', description: 'Native and cross-platform mobile apps for Android — messaging, stores, services', features: ['React Native', 'Push notifications', 'Offline mode', 'Play Store publish'] },
     { title: 'Telegram Stars & Premium', description: 'Telegram Stars integration and Premium services — content monetization, payment system and special capabilities', features: ['Stars payment system', 'Premium gifts & content', 'Subscription system', 'Premium bot'] },
     { title: 'E-Commerce', description: 'Online store systems for Telegram and Web — fully automated', features: ['Product catalog', 'Payment gateway', 'Order tracking', 'Analytics'] },
-    { title: 'Video Production', description: 'Professional video shooting and editing with 5+ years of experience — creating video content of any complexity', features: ['Professional filming', 'Cinema-grade editing', 'Motion graphics', 'Color grading'] },
+    { title: 'Video Studio — Filming & Editing', description: 'We have our own video studio! Take your company videos from shooting to editing to final result — all with us: ad videos, product videos, corporate content. 5+ years of experience', features: ['Our own studio', 'Professional filming', 'Cinema-grade editing', 'Motion graphics', 'Color grading'] },
   ],
 };
 
