@@ -1,6 +1,6 @@
 import {
   Bot, Globe, Smartphone, Star, ShoppingCart,
-  MessageCircle, Send, BarChart3, Clapperboard, Leaf, FileText,
+  MessageCircle, Send, BarChart3, Clapperboard, Leaf, FileText, Building2,
 } from 'lucide-react';
 
 // ─── Simple UI strings ───────────────────────────────────────────
@@ -519,6 +519,7 @@ const projectsConfig = [
   { icon: Globe,         color: 'from-blue-500 to-cyan-400',     link: 'https://arif.uz' },
   { icon: Leaf,          color: 'from-lime-500 to-green-400',    link: 'https://www.idealagrohimoya.uz' },
   { icon: Star,          color: 'from-pink-500 to-rose-400',     link: 'https://koreyapro.uz' },
+  { icon: Building2,     color: 'from-amber-500 to-yellow-400',  link: 'https://hotelqueens.uz' },
   // ── BOTTOM ROW — Telegram botlar ──────────────────────────────────
   { icon: Bot,           color: 'from-violet-500 to-purple-400', link: 'https://t.me/ilimbilimBot' },
   { icon: FileText,      color: 'from-green-500 to-emerald-400', link: 'https://t.me/avtohujjat_bot' },
@@ -531,6 +532,7 @@ const projectsText = {
     { title: 'Arif.uz — Solar Web Sayt', description: "Quyosh panellari kompaniyasi uchun zamonaviy web sayt — mahsulot katalogi, narxlar, bog'lanish formasi va SEO optimizatsiya", tags: ['Next.js', 'Tailwind', 'Prisma'] },
     { title: 'Ideal Agro Himoya — Agro Sayt', description: "Fermerlar uchun sertifikatlangan agro-himoya tizimi — akaritsidlar, insektitsidlar, fungitsidlar, herbitsidlar va o'g'itlar katalogi, ISO 9001 sertifikatlangan", tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Koreyapro.uz — Konsalting Sayt', description: "Andijondagi Koreya Pro Center uchun zamonaviy ko'p tilli web sayt — koreys tili kurslari, Koreyaga o'qishga yo'naltirish, viza va universitetlarga qabul jarayoni", tags: ['Next.js', 'Tailwind', 'Three.js'] },
+    { title: 'Hotelqueens.uz — Mehmonxona Sayti', description: "Queens Hotel mehmonxonasi uchun zamonaviy web sayt — xonalar katalogi, narxlar, galereya va onlayn bron qilish tizimi", tags: ['Next.js', 'Tailwind', 'Booking'] },
     // bottom row — telegram botlar
     { title: '@ilimbilimBot — AI Talaba Yordamchisi', description: "Universitet talabalari uchun AI yordamchi bot — taqdimot, referat, kurs ishi, insho, test va boshqa 15+ xizmat; DOCX/PDF eksport, Telegram Mini App va Stars to'lov integratsiyasi", tags: ['aiogram', 'FastAPI', 'Gemini AI', 'Mini App'] },
     { title: '@avtohujjat_bot — Transport Hujjat Boti', description: "Transport firmalari uchun avtomatik hujjat (ishonchnoma/putyovka) generator boti — firma+parol bilan kirish, moshina va haydovchilar bazasi (Excel orqali), tayyor Word DOCX hujjat", tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
@@ -541,6 +543,7 @@ const projectsText = {
     { title: 'Arif.uz — Solar Сайт', description: 'Современный веб-сайт для компании солнечных панелей — каталог продуктов, цены, форма обратной связи и SEO', tags: ['Next.js', 'Tailwind', 'Prisma'] },
     { title: 'Ideal Agro Himoya — Агро Сайт', description: 'Сертифицированная система агро-защиты для фермеров — акарициды, инсектициды, фунгициды, гербициды и удобрения, сертификация ISO 9001', tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Koreyapro.uz — Консалтинг Сайт', description: 'Современный многоязычный сайт для Koreya Pro Center (Андижан) — курсы корейского языка, консалтинг по обучению в Корее, виза и поступление в университеты', tags: ['Next.js', 'Tailwind', 'Three.js'] },
+    { title: 'Hotelqueens.uz — Сайт Отеля', description: 'Современный сайт для отеля Queens Hotel — каталог номеров, цены, галерея и система онлайн-бронирования', tags: ['Next.js', 'Tailwind', 'Booking'] },
     // bottom row — боты
     { title: '@ilimbilimBot — AI Помощник Студента', description: 'AI-бот для студентов вузов — генерация презентаций, рефератов, курсовых, эссе, тестов и 15+ услуг; экспорт DOCX/PDF, Telegram Mini App и оплата через Stars', tags: ['aiogram', 'FastAPI', 'Gemini AI', 'Mini App'] },
     { title: '@avtohujjat_bot — Бот транспортных документов', description: 'Бот для автоматической генерации транспортных документов (доверенность/путевой лист) — вход по компании+паролю, база машин и водителей (через Excel), готовый Word DOCX документ', tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
@@ -551,6 +554,7 @@ const projectsText = {
     { title: 'Arif.uz — Solar Website', description: 'Modern website for a solar panel company — product catalog, pricing, contact form and SEO optimization', tags: ['Next.js', 'Tailwind', 'Prisma'] },
     { title: 'Ideal Agro Himoya — Agro Site', description: 'Certified agro-protection system for farmers — acaricides, insecticides, fungicides, herbicides and fertilizers catalog, ISO 9001 certified', tags: ['React', 'Tailwind', 'Vite'] },
     { title: 'Koreyapro.uz — Consulting Site', description: 'Modern multilingual website for Koreya Pro Center (Andijan) — Korean language courses, study-in-Korea consulting, visa support and university admissions', tags: ['Next.js', 'Tailwind', 'Three.js'] },
+    { title: 'Hotelqueens.uz — Hotel Website', description: 'Modern website for Queens Hotel — room catalog, pricing, gallery and online booking system', tags: ['Next.js', 'Tailwind', 'Booking'] },
     // bottom row — bots
     { title: '@ilimbilimBot — AI Student Assistant', description: 'AI-powered Telegram bot for university students — presentations, essays, coursework, tests and 15+ services; DOCX/PDF export, Telegram Mini App and Stars payment integration', tags: ['aiogram', 'FastAPI', 'Gemini AI', 'Mini App'] },
     { title: '@avtohujjat_bot — Transport Document Bot', description: 'Auto-document (waybill/proxy) generator bot for transport companies — login by firm+password, vehicle and driver database (via Excel), ready-to-use Word DOCX document', tags: ['Telegram Bot', 'aiogram', 'DOCX'] },
