@@ -24,3 +24,22 @@ dist-ssr
 *.sw?
 
 .vercel
+node_modules/
+.env
+.env.*
+!.env.example
+*.session
+*.session-journal
+sessions/
+*.key
+*.pem
+*.sqlite
+*.sqlite3
+*.db
+users.json
+__pycache__/
+.venv/
+venv/
+.next/
+dist/
+build/
