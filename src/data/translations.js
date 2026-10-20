@@ -1,6 +1,6 @@
 import {
   Bot, Globe, Smartphone, Star, ShoppingCart,
-  MessageCircle, Send, BarChart3, Clapperboard, Leaf, FileText, Building2,
+  MessageCircle, Send, BarChart3, Clapperboard, Leaf, FileText, Building2, ShieldCheck,
 } from 'lucide-react';
 
 // ─── Simple UI strings ───────────────────────────────────────────
@@ -375,6 +375,7 @@ const servicesConfig = [
   { icon: Star,         color: 'from-yellow-500 to-orange-500',bgColor: 'bg-yellow-500/10' },
   { icon: ShoppingCart, color: 'from-rose-500 to-red-500',     bgColor: 'bg-rose-500/10' },
   { icon: Clapperboard, color: 'from-fuchsia-500 to-pink-500', bgColor: 'bg-fuchsia-500/10' },
+  { icon: ShieldCheck,  color: 'from-slate-600 to-slate-400',  bgColor: 'bg-slate-500/10' },
 ];
 
 const servicesText = {
@@ -385,6 +386,7 @@ const servicesText = {
     { title: 'Telegram Xizmatlari', description: "Telegram Stars integratsiyasi va Premium xizmatlar — kontentni monetizatsiya, to'lov tizimi va maxsus imkoniyatlar", features: ["Stars to'lov tizimi", 'Premium hadya & kontent', 'Obuna tizimi', 'Premium bot'] },
     { title: 'E-Commerce', description: "Telegram va Web uchun onlayn do'kon tizimlari — to'liq avtomatlashtirilgan", features: ['Mahsulot katalog', "To'lov gateway", 'Buyurtma tracking', 'Analitika'] },
     { title: 'Video Studio — Syomka & Montaj', description: "O'z video studiyamiz bor! Kompaniyangiz videolarini syomkadan montajgacha, tayyor natijagacha to'liq biz bilan qiling — reklama roliklari, mahsulot videolari, korporativ kontent. 5+ yillik tajriba", features: ["O'z studiyamiz", 'Professional video olish', 'Kino darajali montaj', 'Motion graphics', 'Rangli korreksiya'] },
+    { title: 'Xavfsizlik Auditi & Pentest', description: "Veb-saytingizni chuqur tahlil qilamiz — oddiy foydalanuvchi va etik-haker (pentester) nuqtai nazaridan. Zaifliklar, xatolar va kamchiliklarni topib, to'liq hisobot beramiz va ularni tuzatib ham beramiz. MUHIM: faqat o'zingizga tegishli, yozma ruxsat berilgan saytlar qabul qilinadi — begona saytlar tekshirilmaydi. 100% maxfiylik kafolati.", features: ['Faqat o‘z saytingiz (ruxsat bilan)', 'Zaiflik va bug hisoboti', 'Tuzatish xizmati', '100% maxfiylik'] },
   ],
   ru: [
     { title: 'Telegram Бот', description: 'Создание Telegram ботов любой сложности — автоматизация, CRM, платёжные системы, inline боты', features: ['Inline боты', 'Интеграция оплаты', 'Админ панель', 'Авто-ответы'] },
@@ -393,6 +395,7 @@ const servicesText = {
     { title: 'Telegram Услуги', description: 'Интеграция Telegram Stars и Premium услуги — монетизация контента, платёжная система и особые возможности', features: ['Система оплаты Stars', 'Премиум подарки & контент', 'Система подписки', 'Премиум бот'] },
     { title: 'E-Commerce', description: 'Интернет-магазины для Telegram и Web — полностью автоматизированные', features: ['Каталог товаров', 'Платёжный шлюз', 'Отслеживание заказов', 'Аналитика'] },
     { title: 'Видео Студия — Съёмка и Монтаж', description: 'У нас собственная видеостудия! Видео вашей компании — от съёмки до монтажа и готового результата, всё у нас: рекламные ролики, продуктовые видео, корпоративный контент. Опыт 5+ лет', features: ['Собственная студия', 'Профессиональная съёмка', 'Монтаж кино-уровня', 'Motion graphics', 'Цветокоррекция'] },
+    { title: 'Аудит Безопасности & Пентест', description: 'Глубокий анализ вашего сайта — с позиции обычного пользователя и этичного хакера (пентестера). Находим уязвимости, ошибки и недочёты, даём полный отчёт и устраняем их. ВАЖНО: принимаются только ваши собственные сайты с письменным разрешением — чужие сайты не проверяем. Гарантия 100% конфиденциальности.', features: ['Только ваш сайт (с разрешения)', 'Отчёт об уязвимостях', 'Устранение проблем', '100% конфиденциальность'] },
   ],
   en: [
     { title: 'Telegram Bot', description: 'Creating Telegram bots of any complexity — automation, CRM, payment systems, inline bots', features: ['Inline bots', 'Payment integration', 'Admin panel', 'Auto-reply system'] },
@@ -401,6 +404,7 @@ const servicesText = {
     { title: 'Telegram Services', description: 'Telegram Stars integration and Premium services — content monetization, payment system and special capabilities', features: ['Stars payment system', 'Premium gifts & content', 'Subscription system', 'Premium bot'] },
     { title: 'E-Commerce', description: 'Online store systems for Telegram and Web — fully automated', features: ['Product catalog', 'Payment gateway', 'Order tracking', 'Analytics'] },
     { title: 'Video Studio — Filming & Editing', description: 'We have our own video studio! Take your company videos from shooting to editing to final result — all with us: ad videos, product videos, corporate content. 5+ years of experience', features: ['Our own studio', 'Professional filming', 'Cinema-grade editing', 'Motion graphics', 'Color grading'] },
+    { title: 'Security Audit & Pentest', description: 'We deeply analyze your website — from both a regular user and an ethical hacker (pentester) perspective. We find vulnerabilities, bugs and weaknesses, deliver a full report, and fix them too. IMPORTANT: only your own sites with written authorization are accepted — we do not test third-party sites. 100% confidentiality guaranteed.', features: ['Your own site only (authorized)', 'Vulnerability & bug report', 'Fixing service', '100% confidentiality'] },
   ],
 };
 
