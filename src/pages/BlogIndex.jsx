@@ -3,6 +3,7 @@ import SEOHead from '../components/SEOHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getPosts } from '../data/blog';
 import { RevealLines, Reveal } from '../components/ui/Reveal';
+import BlogCover from '../components/ui/BlogCover';
 
 const UI = {
   uz: { tag: 'Blog', title: 'Foydali', accent: 'Maqolalar', sub: "Biznesingiz uchun web, bot va dizayn bo'yicha amaliy maslahatlar.", read: "o'qish", t1: "DevPro Blog — Web, Bot va Biznes bo'yicha maslahatlar", d1: "Telegram bot va web sayt narxlari, muddatlar, biznes uchun amaliy maslahatlar — DevPro jamoasidan." },
@@ -46,9 +47,10 @@ export default function BlogIndex() {
                 data-cursor
                 className="group flex h-full flex-col overflow-hidden rounded-2xl hairline bg-card transition-transform duration-500 hover:-translate-y-1"
               >
-                <div className={`relative h-28 bg-gradient-to-br ${post.color}`}>
-                  <post.icon className="absolute right-4 top-4 h-7 w-7 text-white/85 transition-transform duration-500 group-hover:scale-110" />
-                  <span className="mono-label absolute bottom-3 left-4 text-white/85">{post.date}</span>
+                <div className="relative h-32 overflow-hidden">
+                  <BlogCover grad={post.grad} seed={i + 1} className="absolute inset-0 h-full w-full" />
+                  <post.icon className="absolute right-4 top-4 h-7 w-7 text-white/90 transition-transform duration-500 group-hover:scale-110" />
+                  <span className="mono-label absolute bottom-3 left-4 text-white/90">{post.date}</span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <div className="mb-3 flex flex-wrap gap-1.5">

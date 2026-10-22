@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { getPost, getPosts } from '../data/blog';
 import { telegramUsername } from '../data/translations';
 import { Reveal } from '../components/ui/Reveal';
+import BlogCover from '../components/ui/BlogCover';
 
 const UI = {
   uz: { back: 'Blogga qaytish', more: 'Boshqa maqolalar', ctaTitle: 'Loyiha boshlaymizmi?', ctaSub: "G'oyangiz bormi? Bepul maslahat va narx taklifi oling.", ctaBtn: 'Hoziroq yozing', read: "o'qish" },
@@ -32,8 +33,16 @@ export default function BlogPost() {
           </Link>
         </Reveal>
 
+        {/* hero cover */}
+        <Reveal delay={0.05} className="mt-6">
+          <div className="relative h-44 overflow-hidden rounded-2xl sm:h-56">
+            <BlogCover grad={post.grad} seed={post.slug.length} className="absolute inset-0 h-full w-full" />
+            <post.icon className="absolute right-5 top-5 h-9 w-9 text-white/90" />
+          </div>
+        </Reveal>
+
         {/* header */}
-        <Reveal delay={0.05} className="mt-8 flex flex-wrap items-center gap-2">
+        <Reveal delay={0.1} className="mt-8 flex flex-wrap items-center gap-2">
           {post.tags.map((tag) => (
             <span key={tag} className="mono-label hairline rounded-full px-2.5 py-1 text-muted">
               {tag}
