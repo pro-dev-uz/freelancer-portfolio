@@ -1,12 +1,18 @@
 import { ArrowUp, Code2 } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { getNavLinks } from '../data/translations';
 import Magnetic from './ui/Magnetic';
+
+const BLOG_LABEL = { uz: 'Blog', ru: 'Блог', en: 'Blog' };
 
 // Footer continues the ink panel — giant cropped ghost wordmark below.
 export default function Footer() {
   const { lang, t } = useLanguage();
   const navLinks = getNavLinks(lang);
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+  const sec = (href) => (isHome ? href : `/${href}`);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -27,12 +33,15 @@ export default function Footer() {
             {navLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={sec(link.href)}
                 className="u-draw mono-label text-invert-muted hover:text-invert-ink"
               >
                 {link.label}
               </a>
             ))}
+            <Link to="/blog" className="u-draw mono-label text-invert-muted hover:text-invert-ink">
+              {BLOG_LABEL[lang] || BLOG_LABEL.uz}
+            </Link>
           </nav>
 
           <Magnetic>

@@ -19,52 +19,34 @@ const SEO_DATA = {
   },
 };
 
-export default function SEOHead() {
+// Optional props let blog pages override title/description and the canonical
+// path (e.g. "/blog/slug"). Without props it uses the homepage defaults.
+export default function SEOHead({ title, description, path = '/' }) {
   const { lang } = useLanguage();
-  const seo = SEO_DATA[lang] || SEO_DATA.uz;
+  const seoLang = SEO_DATA[lang] ? lang : 'uz';
+  const base = SEO_DATA[seoLang];
+  const finalTitle = title || base.title;
+  const finalDesc = description || base.description;
 
   useEffect(() => {
-    // Title
-    document.title = seo.title;
+    document.title = finalTitle;
+    document.documentElement.lang = seoLang;
 
-    // html lang attribute
-    document.documentElement.lang = seo.lang;
+    const canonicalUrl =
+      'https://pro-dev.uz' + path + (seoLang === 'uz' ? '' : `${path.includes('?') ? '&' : '?'}lang=${seoLang}`);
+    const setAttr = (sel, attr, val) => {
+      const el = document.querySelector(sel);
+      if (el) el.setAttribute(attr, val);
+    };
 
-    // Canonical follows the language URL (uz = base, ru/en = ?lang=)
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute(
-        'href',
-        seo.lang === 'uz' ? 'https://pro-dev.uz/' : `https://pro-dev.uz/?lang=${seo.lang}`
-      );
-    }
-
-    // og:locale per language
-    const ogLocale = document.querySelector('meta[property="og:locale"]');
-    if (ogLocale) {
-      ogLocale.setAttribute(
-        'content',
-        { uz: 'uz_UZ', ru: 'ru_RU', en: 'en_US' }[seo.lang] || 'uz_UZ'
-      );
-    }
-
-    // Meta description
-    let desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', seo.description);
-
-    // OG title & description
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', seo.title);
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', seo.description);
-
-    // Twitter
-    let twTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twTitle) twTitle.setAttribute('content', seo.title);
-    let twDesc = document.querySelector('meta[name="twitter:description"]');
-    if (twDesc) twDesc.setAttribute('content', seo.description);
-
-  }, [lang, seo]);
+    setAttr('link[rel="canonical"]', 'href', canonicalUrl);
+    setAttr('meta[property="og:locale"]', 'content', { uz: 'uz_UZ', ru: 'ru_RU', en: 'en_US' }[seoLang]);
+    setAttr('meta[name="description"]', 'content', finalDesc);
+    setAttr('meta[property="og:title"]', 'content', finalTitle);
+    setAttr('meta[property="og:description"]', 'content', finalDesc);
+    setAttr('meta[name="twitter:title"]', 'content', finalTitle);
+    setAttr('meta[name="twitter:description"]', 'content', finalDesc);
+  }, [seoLang, finalTitle, finalDesc, path]);
 
   return null;
 }

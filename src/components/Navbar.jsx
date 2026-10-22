@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, Sun, Moon, Code2 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -6,12 +7,21 @@ import { useLanguage } from '../context/LanguageContext';
 import { getNavLinks } from '../data/translations';
 import { EASE } from '../lib/motion';
 
+const BLOG_LABEL = { uz: 'Blog', ru: 'Блог', en: 'Blog' };
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { theme, toggleTheme } = useTheme();
   const { lang, changeLang, t, LANGS, LANG_LABELS } = useLanguage();
+
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+  const onBlog = pathname.startsWith('/blog');
+  // section links work as in-page anchors on home, full paths elsewhere
+  const sec = (href) => (isHome ? href : `/${href}`);
+  const blogLabel = BLOG_LABEL[lang] || BLOG_LABEL.uz;
 
   const navLinks = getNavLinks(lang);
 
@@ -34,7 +44,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
 
-  // Lock body scroll while overlay menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => {
@@ -54,10 +63,9 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
-          scrolled ? 'bg-bg/85 backdrop-blur-xl hairline-b' : 'bg-transparent'
+          scrolled || !isHome ? 'bg-bg/85 backdrop-blur-xl hairline-b' : 'bg-transparent'
         }`}
       >
-        {/* scroll progress hairline */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-accent"
           style={{ scaleX: progress }}
@@ -66,26 +74,24 @@ export default function Navbar() {
         <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
           <div className="flex h-16 items-center justify-between sm:h-20">
             {/* Logo */}
-            <a href="#home" className="group flex items-center gap-2.5" data-cursor>
+            <Link to="/" className="group flex items-center gap-2.5" data-cursor>
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink transition-colors duration-300 group-hover:bg-accent sm:h-10 sm:w-10">
                 <Code2 className="h-5 w-5 text-bg transition-colors duration-300 group-hover:text-white" />
               </span>
               <span className="flex items-baseline gap-1">
-                <span className="font-display text-base font-bold tracking-tight sm:text-lg">
-                  DevPro
-                </span>
+                <span className="font-display text-base font-bold tracking-tight sm:text-lg">DevPro</span>
                 <span className="mono-label text-accent">®</span>
               </span>
-            </a>
+            </Link>
 
             {/* Desktop nav */}
             <div className="hidden items-center gap-8 lg:flex">
               {navLinks.map((link, i) => {
-                const active = activeSection === link.href.slice(1);
+                const active = isHome && activeSection === link.href.slice(1);
                 return (
                   <a
                     key={link.href}
-                    href={link.href}
+                    href={sec(link.href)}
                     className={`u-draw mono-label transition-colors duration-300 ${
                       active ? 'text-accent' : 'text-muted hover:text-ink'
                     }`}
@@ -95,6 +101,15 @@ export default function Navbar() {
                   </a>
                 );
               })}
+              <Link
+                to="/blog"
+                className={`u-draw mono-label transition-colors duration-300 ${
+                  onBlog ? 'text-accent' : 'text-muted hover:text-ink'
+                }`}
+              >
+                <span className="mr-1.5 text-accent/60">0{navLinks.length + 1}</span>
+                {blogLabel}
+              </Link>
             </div>
 
             {/* Controls */}
@@ -127,7 +142,7 @@ export default function Navbar() {
               </button>
 
               <a
-                href="#contact"
+                href={sec('#contact')}
                 className="group hidden items-center gap-2 overflow-hidden rounded-full bg-ink px-5 py-2.5 lg:inline-flex"
                 data-cursor
               >
@@ -138,7 +153,6 @@ export default function Navbar() {
                 <span className="mono-label absolute opacity-0">{t('nav.cta')}</span>
               </a>
 
-              {/* Mobile hamburger */}
               <button
                 onClick={() => setIsOpen(true)}
                 className="flex h-8 w-8 items-center justify-center text-ink lg:hidden"
@@ -183,7 +197,7 @@ export default function Navbar() {
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
+                  href={sec(link.href)}
                   onClick={() => setIsOpen(false)}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -200,12 +214,32 @@ export default function Navbar() {
                 </motion.a>
               ))}
 
-              <motion.a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: EASE, delay: 0.15 + navLinks.length * 0.07 }}
+              >
+                <Link
+                  to="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className="hairline-b group flex items-center justify-between py-5"
+                >
+                  <span className="flex items-baseline gap-4">
+                    <span className="mono-label text-accent">0{navLinks.length + 1}</span>
+                    <span className="font-display text-2xl font-bold uppercase tracking-tight text-ink">
+                      {blogLabel}
+                    </span>
+                  </span>
+                  <span className="text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </motion.div>
+
+              <motion.a
+                href={sec('#contact')}
+                onClick={() => setIsOpen(false)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: EASE, delay: 0.15 + (navLinks.length + 1) * 0.07 }}
                 className="mt-8 flex items-center justify-center gap-3 rounded-full bg-accent py-4"
               >
                 <span className="mono-label text-white">{t('nav.cta')}</span>

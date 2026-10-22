@@ -43,4 +43,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pro-dev.uz/"/>
   </url>
 
+  <!-- Blog -->
+  <url>
+    <loc>https://pro-dev.uz/blog</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pro-dev.uz/blog/telegram-bot-yaratish-narxi</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pro-dev.uz/blog/web-sayt-yasash-narx-muddat</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pro-dev.uz/blog/telegram-bot-yoki-web-sayt</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
